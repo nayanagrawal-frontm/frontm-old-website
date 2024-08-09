@@ -1,0 +1,65 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"); */
+
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+/* //contact us */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  font-family: Figtree;
+}
+a:active,
+a:focus,
+img:active,
+img:focus {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  font-family: Figtree;
+}
+p {
+  font-family: Figtree;
+  font-size: 1.1rem;
+  /* text-align: center; */
+  font-weight: 500;
+  line-height: 24px;
+}
+.text-white {
+  color: #fff;
+}
+.text-orange {
+  color: #ff8824;
+}
+/* //navbar */
+a {
+  cursor: pointer;
+}
+a:active,
+a:focus,
+img:active,
+img:focus {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+div {
+  overflow-wrap: break-word;
+}
+div::-webkit-scrollbar {
+  width: 0;
+}
+
+li {
+  font-family: Figtree;
+}

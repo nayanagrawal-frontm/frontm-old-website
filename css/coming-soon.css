@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: Figtree, sans-serif;
+}
+
+.coming-soon-section-top {
+  min-height: 100vh !important;
+  background-image: url("../assets/images/header-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.coming-soon-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  padding: 0 6rem;
+  /* gap: 2rem; */
+}
+.coming-soon-title {
+  color: #fff;
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  /* line-height: 48px; */
+}
+.coming-soon-btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.coming-soon-input {
+  /* padding: 1rem; */
+  color: rgb(200, 200, 200);
+  background: transparent;
+  border: 1px solid white;
+  /* padding: 5rem 1rem; */
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  width: 312px;
+  /* text-align: center; */
+  outline: none;
+  font-size: 1rem;
+}
+.coming-soon-input::placeholder {
+  color: rgb(200, 200, 200);
+  font-size: 1rem;
+  font-weight: 300;
+}
+.coming-soon-input:focus {
+  outline: none;
+}
+.btn-small {
+  background: #864afc;
+  border-radius: 10px;
+  padding: 0.8rem 1.6rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.btn-big {
+  text-align: center;
+  width: 312px;
+  padding: 0.5rem 0;
+  border: 1px solid #ffff;
+  border-radius: 25px;
+}
+@media only screen and (max-width: 768px) {
+  .coming-soon-input {
+    width: 280px;
+  }
+  .coming-soon-content-container {
+    padding: 0 2rem;
+  }
+  .coming-soon-title {
+    font-size: 2.175rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .coming-soon-input {
+    max-width: 280px;
+    width: 250px;
+  }
+  .coming-soon-btns {
+    flex-direction: column;
+  }
+}

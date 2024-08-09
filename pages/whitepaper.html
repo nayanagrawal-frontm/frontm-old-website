@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FrontM - Whitepaper</title>
+    <link rel="stylesheet" href="/css/whitepaperStyle.css" />
+    <link rel="stylesheet" href="/css/whitepaperStyle2.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script
+      defer
+      src="https://unpkg.com/alpinejs-axios@latest/dist/api.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body x-data="{ isDownloadAppDialogOpen: false }">
+    <!-- main-section -->
+    <main>
+      <div class="sec1">
+        <div class="sec-center">
+          <p class="heading">
+            White Paper : <br />
+            The Future of Shipping
+          </p>
+          <p class="description">
+            Discover how FrontM’s solutions foster better collaboration,
+            productivity, wellbeing and entertainment and lead to unprecedented
+            operational efficiency.
+          </p>
+        </div>
+      </div>
+      <div class="sec2">
+        <div class="sec-center sec2-container">
+          <div class="sec2-left-container">
+            <p class="date">13 Feb 2020·12 pages</p>
+            <p class="description">
+              The maritime industry has been thrust into a technological
+              reckoning by the pandemic, revealing an urgent need for technology
+              adoption that would have otherwise evolved gradually.<br /><br />
+
+              Despite this urgency, the maritime sector lags in embracing
+              current and emerging technologies, falling behind global trends.
+              This delay inhibits the industry from reaping the financial and
+              time-saving rewards that technology can offer.<br /><br />
+
+              FrontM is spearheading progress in the maritime realm with a
+              primary focus on enhancing crew productivity, human capital
+              management and fostering sustainability. This whitepaper explores
+              how FrontM’s solutions lead to better collaboration, productivity,
+              wellbeing and entertainment and bring unprecedented levels of
+              efficiency to shipping operations.
+            </p>
+            <div class="takeaways">
+              <p class="heading">
+                <span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_1_4999)">
+                      <path
+                        d="M5.94001 18.99H15C15.65 18.99 16.26 18.68 16.63 18.15L20.58 12.58C20.83 12.23 20.83 11.77 20.58 11.42L16.62 5.84C16.26 5.31 15.65 5 15 5H5.94001C5.13001 5 4.66001 5.93 5.13001 6.59L9.00001 12L5.13001 17.41C4.66001 18.07 5.13001 18.99 5.94001 18.99Z"
+                        fill="#864AFC"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1_4999">
+                        <rect width="24" height="24" fill="white" />
+                      </clipPath>
+                    </defs></svg
+                ></span>
+                Key Takeaways
+              </p>
+              <ul class="list">
+                <li>
+                  <span
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="8"
+                      height="8"
+                      viewBox="0 0 8 8"
+                      fill="none"
+                    >
+                      <circle
+                        cx="4"
+                        cy="4"
+                        r="4"
+                        fill="#864AFC"
+                        fill-opacity="0.3"
+                      /></svg></span
+                  >What kind of maritime technologies can unlock unprecedented
+                  operational efficiency?
+                </li>
+                <li>
+                  <span
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="8"
+                      height="8"
+                      viewBox="0 0 8 8"
+                      fill="none"
+                    >
+                      <circle
+                        cx="4"
+                        cy="4"
+                        r="4"
+                        fill="#864AFC"
+                        fill-opacity="0.3"
+                      /></svg></span
+                  >How can crew managers ensure swift decision-making and
+                  enhance operational fluidity with emerging technology?
+                </li>
+                <li>
+                  <span
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="8"
+                      height="8"
+                      viewBox="0 0 8 8"
+                      fill="none"
+                    >
+                      <circle
+                        cx="4"
+                        cy="4"
+                        r="4"
+                        fill="#864AFC"
+                        fill-opacity="0.3"
+                      /></svg></span
+                  >Using a 360° crew engagement platform like FrontM, crew
+                  managers can solve everything from hiring talent to increasing
+                  productivity and ensuring crew welfare.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="sec2-right-container"
+            x-data="{ formData: { firstName: '', lastName: '', email: '', companyName: '', companyType: '-Select-' }, downloadWhitepaper:function() {
+                    $post('',).then((response) => {
+
+                    })
+                } }"
+          >
+            <p class="heading">Download Now</p>
+            <div class="underline"></div>
+
+            <!-- <div class="progress-btn" data-progress-style="fill-bottom">
+	  <div class="btn">Button</div>
+	  <div class="progress"></div>
+	</div> -->
+
+            <form
+              action="https://forms.zohopublic.eu/frontmintegration/form/WhitepaperSignUp/formperma/aCTZn3VRHFJRd7yZaB7aZWLK6KYhoSXFBsW3Lp-Ced8/htmlRecords/submit"
+              name="form"
+              id="form"
+              method="POST"
+              accept-charset="UTF-8"
+              enctype="multipart/form-data"
+              x-data="{ formDta }"
+            >
+              <input
+                type="hidden"
+                name="zf_referrer_name"
+                value=""
+              /><!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
+
+              <input
+                type="hidden"
+                name="zf_redirect_url"
+                value=""
+              /><!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
+
+              <input
+                type="hidden"
+                name="zc_gad"
+                value=""
+              /><!-- If GCLID is enabled in Zoho CRM Integration, click details of AdWords Ads will be pushed to Zoho CRM -->
+
+              <!-- Email -->
+              <div class="box-shadow">
+                <label for="Email">Email <em>*</em></label
+                ><br />
+                <input
+                  type="text"
+                  id="mail"
+                  name="Email"
+                  value=""
+                  fieldType="9"
+                  maxlength="255"
+                  placeholder="Enter Your Email Address"
+                />
+              </div>
+              <br />
+
+              <!-- first name -->
+              <div class="box-shadow">
+                <label for="Name_First">First name</label><br />
+                <input
+                  type="text"
+                  id="Name_First"
+                  name="Name_First"
+                  value=""
+                  placeholder="Enter Your First Name"
+                  maxlength="255"
+                  fieldType="7"
+                />
+              </div>
+              <br />
+
+              <!-- Last Name -->
+              <div class="box-shadow">
+                <label for="Name_Last">Last name</label><br />
+                <input
+                  type="text"
+                  id="Name_Last"
+                  name="Name_Last"
+                  value=""
+                  placeholder="Enter Your Last Name"
+                  maxlength="255"
+                  fieldType="7"
+                />
+              </div>
+              <br />
+
+              <!-- Company -->
+              <div class="box-shadow">
+                <label for="SingleLine">Company<em>*</em></label
+                ><br />
+                <input
+                  type="text"
+                  id="SingleLine"
+                  name="SingleLine"
+                  value=""
+                  placeholder="Enter Your Company name"
+                  maxlength="255"
+                />
+              </div>
+              <br />
+
+              <label
+                ><div class="agreed">
+                  <span style="white-space: pre-wrap"
+                    >We&#39;re committed to your privacy. FrontM uses the
+                    information you provide to us to contact you about our
+                    relevant content, products, and services. You may
+                    unsubscribe from these communications at any time. For more
+                    information, check out our
+                    <a
+                      href="https://frontm.com/privacy-policy/index.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Privacy Policy</a
+                    >.</span
+                  ><br /></div
+              ></label>
+
+              <button
+                style="width: 100%"
+                onclick="window.open('/assets/files/2city12p.pdf')"
+              >
+                <input type="submit" value="Download Now" id="download" />
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container min-h-50 bg-footer flex col center j-c gap-2">
+      <div class="flex j-sb gap-1">
+        <div class="flex center col gap-2 min-h-25">
+          <a href="#"
+            ><img
+              src="/assets/images/logos/logo.svg"
+              alt="frontM Limited"
+              width="auto"
+              height="60px"
+          /></a>
+          <script
+            type="text/javascript"
+            src="https://campaigns.zoho.eu/js/zc.iframe.js"
+          ></script>
+          <iframe
+            title="Subscribe to Newsletter"
+            style="border-style: none; margin-left: -2.5rem"
+            id="iframewin"
+            src="https://rwbqin-zcmp.maillist-manage.eu/ua/Optin?od=12ba7ea5550f&zx=14ad4effa2&sD=11e29f379e32d44d"
+          ></iframe>
+          <div class="flex row center j-c gap-1 mb-4 ft_social-icons">
+            <a href="https://twitter.com/FrontMPlatform" target="_blank"
+              ><img
+                class="logo"
+                src="/assets/images/socials/x.svg"
+                alt="Follow us on X"
+                srcset="/assets/images/socials/x.svg"
+            /></a>
+            <a
+              href="https://www.linkedin.com/company/frontm-limited"
+              target="_blank"
+              ><img
+                class="logo"
+                src="/assets/images/socials/linkedIn.svg"
+                alt="Follow us on LinkedIn"
+                srcset="/assets/images/socials/linkedIn.svg"
+            /></a>
+          </div>
+        </div>
+
+        <div class="flex gap-4 h-100p">
+          <ul class="flex col gap-1">
+            <li><h6 class="t-white">Products</h6></li>
+            <li>The Maritime Superapp</li>
+            <li>App-marketplace</li>
+            <li>Low-code developer tools</li>
+          </ul>
+          <ul class="flex col gap-1">
+            <li><h6 class="t-white">Industry</h6></li>
+            <li>Maritime shipping</li>
+            <li>Cruise</li>
+            <li>Fisheries</li>
+            <li>Ports & harbours</li>
+            <li>Remote Enterprises</li>
+            <li>Liesure-yachts & superyachts</li>
+            <li>Other</li>
+          </ul>
+          <ul class="flex col gap-1">
+            <li><h6 class="t-white">Company</h6></li>
+            <li>About Us</li>
+            <li>Press</li>
+            <li>Investor relations</li>
+            <li>Contact us</li>
+          </ul>
+          <ul class="flex col gap-1">
+            <li><h6 class="t-white">Resources</h6></li>
+            <li>White Papers</li>
+            <li>Blogs & articles</li>
+            <li>News</li>
+            <li>Help</li>
+            <li>Terms</li>
+          </ul>
+        </div>
+      </div>
+      <p style="color: #638dff; font-size: 1rem; margin-top: 2rem">
+        © All rights reserved
+      </p>
+    </footer>
+    <script
+      src="https://tag.clearbitscripts.com/v1/pk_e371ccc2a8476117c19f70e730a0e8ab/tags.js"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></script>
+    <script src="/js/whitepaperScript.js"></script>
+  </body>
+</html>

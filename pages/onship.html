@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontM | Intelligent Collaboration</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../css/onship.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .new-loader {
+            border: 4px solid purple;
+            border-radius: 50%;
+            border-top: 4px solid grey;
+            width: 40px;
+            height: 40px;
+            -webkit-animation: spin 2s linear infinite;
+            /* Safari */
+            animation: loading-spin 0.5s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes loading-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loading-spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="onship" x-data="{
+            isDownloadAppDialogOpen: false,
+            api: 'https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type%3D%3D%22micro_app_plans%22%5D%7Corder%28_createdAt+asc%29%7Bplan%2Ctitle%2Cshort_description%2Coffer%2Cselling_points%5B%5D%7Btitle%2Cdescription%2C%27icon%27%3Aicon.asset-%3Eurl%7D%2Cdark_color%2Clight_color%2Cborder_color%2Csubscribe_cta%2C%27iconUrl%27%3Aicon.asset-%3Eurl%2Cproducts%5B%5D-%3E%7Btitle%2Coffer%2Cshort_description%2Cfeatures_v2%5B%5D+%7B%27iconUrl%27%3Aicon.asset-%3Eurl%2Ctitle%2Cdescription%7D%2Ctype-%3E%7Btype%2C%27badge_bg_color%27%3Abadge_bg_color.hex%2C%27badge_text_color%27%3Abadge_text_color.hex%7D%2C%27imageUrl%27%3A+horizontal_banner.asset-%3Eurl%2Cvalue_proposition_v2%7D%7D',
+            microappPlans: null,
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight,
+            selectedPlan: 0,
+            isColumn: (window.innerWidth > window.innerHeight ? 'landscape-primary' : 'portrait-primary') === 'portrait-primary'
+    }" x-init="() => (
+        $.get(api).then((response) => {
+            let plans = [];
+            response.result.forEach((plan) =>{
+                if(plan.products !== null) {
+                    plans.push(plan);
+                }
+            });
+            microappPlans = plans;
+
+            window.addEventListener('resize', function() {
+                var orientation = window.innerWidth > window.innerHeight ? 'landscape-primary' : 'portrait-primary';
+                isColumn = orientation === 'portrait-primary';
+                windowWidth = window.innerWidth;
+                windowHeight= window.innerHeight;
+            });
+        })
+    )">
+    <div class="section hero bg-white flex col gap-1 center relative" x-data="{ isFullScreenMenuOpen: false }">
+        <div x-show="isFullScreenMenuOpen"
+            class="bg-purple-dark fixed t-0 l-0 r-0 b-0 w-100 h-100 z-9999 flex col center j-c gap-1" style="display: none;"
+            @click.outside="isFullScreenMenuOpen = false">
+            <div class="w-90p flex col end">
+                <h6 class="mt-0 mb-q">Solutions</h6>
+                <ul class="flex col gap-h pl-0">
+                    <li class="flex j-fe"><a class="t-white" href="./onship.html">Maritime Operators</a></li>
+                    <li class="flex j-fe"><a class="t-white" href="./coming-soon.html">Solution Providers</a></li>
+                    <li class="flex j-fe"><a class="t-white" href="./coming-soon.html">Service Providers</a></li>
+                    <li class="flex j-fe"><a class="t-white" href="./coming-soon.html">Maritime Professionals</a></li>
+                </ul>
+            </div>
+            <div class="w-90p flex col end hide">
+                <h6 class="mt-0 mb-q">Industry</h6>
+                <ul class="flex col pl-0">
+                    <li class="flex j-fe"><a class="t-white"
+                            href="https://help.frontm.com/hc/en-us/categories/4417753792401-Developers"
+                            rel="noopener noreferrer">Maritime</a></li>
+                </ul>
+            </div>
+            <div class="w-90p flex col end">
+                <h6 class="mt-0 mb-q">Company</h6>
+                <ul class="flex col gap-h pl-0">
+                    <li class="flex j-fe"><a class="t-white" href="https://platform.frontm.com/about" rel="noopener noreferrer">About
+                            Us</a></li>
+                    <li class="flex j-fe"><a class="t-white" href="./news.html" rel="noopener noreferrer">Press</a>
+                    </li>
+                    <li class="flex j-fe"><a class="t-white" href="https://platform.frontm.com/investor-relations"
+                            rel="noopener noreferrer">Investor Relations</a></li>
+                    <li class="flex j-fe"><a class="t-white" href="https://platform.frontm.com/careers"
+                                             rel="noopener noreferrer">Careers</a></li>
+                    <li class="flex j-fe"><a class="t-white" href="https://platform.frontm.com/contact"
+                            rel="noopener noreferrer">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="w-90p flex col end">
+                <h6 class="mt-0 mb-q">Resources</h6>
+                <ul class="flex col gap-h pl-0">
+                    <li class="flex j-fe"><a class="t-white" href="./resourcesHub.html"
+                            rel="noopener noreferrer">Resources Hub</a></li>
+                    <li class="flex j-fe"><a class="t-white" href="https://help.frontm.com/hc/en-us"
+                            rel="noopener noreferrer">Help</a></li>
+                    <li class="flex j-fe"><a class="t-white" href="./terms-condition.html"
+                            rel="noopener noreferrer">Legal</a></li>
+                </ul>
+            </div>
+            <div class="flex j-fe w-90p">
+                <button @click="isFullScreenMenuOpen = !isFullScreenMenuOpen" class="t-blue pb-h pt-h ta-e"
+                    style="padding-right: 0px;">Close</button>
+                <!-- <a href="#" class="t-blue pb-h pt-h w-45p b-rounded b-blue ta-c">Sign-In</a> -->
+            </div>
+        </div>
+        <div class="absolute t-0 hero-bg bg-hero-v2 flex col j-c center z-0 overflow-h">
+            <div class="layer-1 w-100p h-100p flex col j-c center overflow-h">
+                <div class="layer-2 w-100p h-100p"></div>
+            </div>
+        </div>
+        <dialog>
+            <iframe aria-label='Book a Demo with FrontM' frameborder="0" style="height:500px;width:99%;border:none;"
+                src='https://forms.zohopublic.eu/frontmintegration/form/BookaDemoPopup/formperma/X2cHKx12QHdH4yfabtPjAGCsaeIG60kauGiWzds5uoY'></iframe>
+        </dialog>
+
+        <header class="content-area-w z-1">
+            <a href="../">
+                <img class="logo "
+                    src="https://cdn.sanity.io/images/7b7oo1uk/production/654c47c76962cde4e86033bb436a011356c5559d-716x253.svg"
+                    alt="frontM Limited" class="of-contain">
+            </a>
+            <nav>
+                <ul class="flex gap-2 wide-menu">
+                    <li class="relative" x-data="{ isOpen: false }">
+                        <button @click="isOpen = !isOpen" class="t-white flex gap-q bg-transparent header-menu-item">
+                            <span>Solutions</span><img
+                                src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                                alt="Down Arrow" />
+                        </button>
+                        <div x-show="isOpen" x-transition.duration.700ms
+                            class="bg-purple-dark absolute top-40px card-rounded-sm p-1 r-0 dd-bs" style="display: none;"
+                            @click.outside="isOpen = false">
+                            <ul class="pl-0 flex col gap-1">
+                                <li><a class="t-white header-menu-item" href="./onship.html">Maritime Operators</a></li>
+                                <li><a class="t-white header-menu-item" href="./coming-soon.html">Solution Providers</a></li>
+                                <li><a class="t-white header-menu-item" href="./coming-soon.html">Service Providers</a></li>
+                                <li><a class="t-white header-menu-item" href="./coming-soon.html">Maritime Professionals</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="relative hide" x-data="{ isOpen: false }">
+                        <button @click="isOpen = !isOpen" class="t-white flex gap-q bg-transparent header-menu-item"
+                            onclick="">
+                            <span>Industry</span><img
+                                src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                                alt="Down Arrow" />
+                        </button>
+                        <div x-show="isOpen" class="bg-white absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs"
+                            style="display: none;" @click.outside="isOpen = false">
+                            <ul class="pl-0 flex col gap-1">
+                                <li><a class="t-white header-menu-item"
+                                        href="https://help.frontm.com/hc/en-us/categories/4417753792401-Developers"
+                                        rel="noopener noreferrer">Maritime</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li style="position: relative;" x-data="{ isOpen: false }">
+                        <button @click="isOpen = !isOpen" class="t-white flex gap-q bg-transparent header-menu-item"
+                            onclick="">
+                            <span>Company</span><img
+                                src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                                alt="Down Arrow" />
+                        </button>
+                        <div x-show="isOpen" x-transition.duration.700ms
+                            class="bg-purple-dark absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs"
+                            style="display: none;box-shadow: -9px 7px 13px rgb(45 45 45 / 15%);"
+                            @click.outside="isOpen = false">
+                            <ul class="pl-0 flex col gap-1">
+                                <li><a class="t-white header-menu-item" href="https://platform.frontm.com/about"
+                                        rel="noopener noreferrer">About Us</a></li>
+                                <li><a class="t-white header-menu-item" href="./news.html"
+                                        rel="noopener noreferrer">Press</a></li>
+                                <li><a class="t-white header-menu-item" href="https://platform.frontm.com/investor-relations"
+                                        rel="noopener noreferrer">Investor Relations</a></li>
+                                <li><a class="t-white header-menu-item" href="https://platform.frontm.com/careers"
+                                        rel="noopener noreferrer">Careers</a></li>
+                                <li><a class="t-white header-menu-item" href="https://platform.frontm.com/contact"
+                                        rel="noopener noreferrer">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li style="position: relative;" x-data="{ isOpen: false }">
+                        <button @click="isOpen = !isOpen" class="t-white flex gap-q bg-transparent header-menu-item"
+                            onclick="">
+                            <span>Resources</span><img
+                                src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                                alt="Down Arrow" />
+                        </button>
+                        <div x-show="isOpen" x-transition.duration.700ms
+                            class="bg-purple-dark absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs" style="display: none;"
+                            @click.outside="isOpen = false">
+                            <ul class="pl-0 flex col gap-1">
+                                <li><a class="t-white header-menu-item" href="./resourcesHub.html"
+                                        rel="noopener noreferrer">Resources Hub</a></li>
+                                <li><a class="t-white header-menu-item" href="https://help.frontm.com/hc/en-us"
+                                        rel="noopener noreferrer">Help</a></li>
+                                <li><a class="t-white header-menu-item" href="./terms-condition.html"
+                                        rel="noopener noreferrer">Legal</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="relative hide menu-item"><a class="gap-h b-orange t-white f-medium b-rounded" href="#"
+                            style="padding: 0.6rem 2rem; background:#FC7414;">App Marketplace</a></li>
+                </ul>
+
+                <div>
+                    <button @click="isFullScreenMenuOpen = !isFullScreenMenuOpen" id="m-menu" class="t-white">
+                        <img src="https://cdn.sanity.io/images/7b7oo1uk/production/c6b288b140589ecbce259a615c708a893ba2727a-24x24.svg"
+                            alt="Mobile Menu"
+                            srcset="https://cdn.sanity.io/images/7b7oo1uk/production/c6b288b140589ecbce259a615c708a893ba2727a-24x24.svg">
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- hero section -->
+        <div class="flex center j-sb content-area-w hero-content mt-4 pb-3"
+            x-bind:style="{ 'flex-direction' : isColumn ? 'column-reverse' : 'row' }">
+            <div class="content-area-2col-w hero-text-container t-white flex col center z-0 as-s order-mob"
+                x-bind:style="{ 'align-items' : isColumn ? 'center' : 'start', 'text-align' : isColumn ? 'center' : 'start' }">
+                <p class="mt-1 mb-1 hero-tagline">The World’s First Maritime Superapp</p>
+                <h1>Unified Collaboration Solution for <span style="white-space: nowrap;">Ship-Shore</span> Teams</h1>
+
+                <h5 class="line-height-2 pt-1 fw-500">Elevate crew engagement to drive operational efficiency, safety and wellbeing</h5>
+
+                <a class="t-white card-rounded-xs w-fc mt-2 flex center gap-h f-medium scale-on-hover"
+                    style="background-color: #864AFC;padding: 0.8rem 2rem;"
+                    href='https://forms.zohopublic.eu/frontmintegration/form/BookaDemoPopup/formperma/X2cHKx12QHdH4yfabtPjAGCsaeIG60kauGiWzds5uoY'
+                    title="Book a Demo with FrontM" target='_blank'
+                    onclick="zforms_open_window(this.href, 648, 700); return false">
+                    <span>Book a Demo</span>
+                </a>
+            </div>
+            <div class="content-area-2col-w center j-c relative hero-img-onship z-0" x-bind:style="{ 'margin-top' : isColumn ? '4rem' : '0rem' }">
+                <img style="width: 100%; object-fit: contain; "
+                    src="https://cdn.sanity.io/images/7b7oo1uk/production/3797ea974d21d9ce95c80d90d8c52b37afc74578-2819x1566.png"
+                    alt="onship">
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- end 0f hero-section -->
+    <!-- section-2 -->
+    <div class="flex center j-c">
+        <div class="core-features testimonial-container flex col center mt-4 pb-0 relative mob-pb-0" x-init="initializeFeaturesCarousel()">
+            <!-- <h3 class="fs-md-3 f-700 ta-c pl-1 pr-1 w-85p mt-3">Put crew first and craft a culture where every member is key</h3> -->
+            <div class="swiper-carousel mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/e64aea0a11c724ca119cb4601edb01cf4eb279a6-300x204.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Simplify ship-shore communication</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/c7ecc561e260a8767b97be0a366a6640eb9e0333-59x61.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Guarantee data privacy & security</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/e14e074fdd1873fde171cafb0c86063cc8cbeac7-61x61.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Reach crew with precise targeting</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/c8cae5b58ed499f1efaa633d94440af12cd85b29-600x593.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Foster a continuous feedback loop</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/7dceae9108f631d2f77581565d6a155a4db544ce-422x675.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Avoid social media for internal comms</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/a1c1392ea586c649e4e962e6b467171951504437-511x582.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Assure compliance accountability</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/aaa640b1218a983e430ebdd263ab64c112069fa3-65x56.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Reduce the risks of shadow IT from social media</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/a9c92e90e5938900e8d14109811001cddf6aa67f-582x582.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Minimise maritime human errors</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/d45da0dbf373f7da9833082b6dd25a7efdaa8a15-481x532.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Reduce diversions & repatriations</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide flex col">
+                        <div class="icon-box">
+                            <div class="img-wrapper">
+                                <img src="https://cdn.sanity.io/images/7b7oo1uk/production/08b827568f23deb136019c96de17210a9a9843da-472x552.svg" alt="" class="feature-img">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p class="fs-normal">Remove avoidable costs & risks</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="swiper-pagination mb-1"></div> -->
+            </div>
+        </div>
+    </div>
+    <!-- end of section-2 -->
+    <template x-if="microappPlans">
+        <div class="flex col center mt-2 microapp-plans-container">
+            <!-- section-4 -->
+            <h3 class="f-700 fs-large mt-2 ta-c pl-1 pr-1">One Maritime Platform, Numerous Powerful Apps</h3>
+            <p class="fs-md-2 ta-c pt-1">Begin with our starter plans for scalable digital success</p>
+            <div class="plan-btns section sec-4 hide-scrollbar">
+                <template x-for="(plan, index) in microappPlans">
+                    <button class="microapp-plan-btn flex row center j-c gap-1 ml-1 mr-1 cursor-pointer" :key="index"
+                        style="border-radius: 1rem;" x-on:click="handleMicroappSelection(microappPlans, index); selectedPlan = index"
+                        x-bind:style="{'background': selectedPlan === index ? 'rgb(107,62,149)' : 'rgb(242,238,254)' }">
+                        <img :src="plan.iconUrl" class="of-contain" x-bind:style="{'filter': selectedPlan === index ? 'invert(0%)' : 'invert(100%)'}" />
+                        <h3 class="fw-500" x-bind:style="{'color': selectedPlan === index ? '#fff' : '#000'}" x-text="plan.plan"></h3>
+                    </button>
+                </template>
+            </div>
+            <!-- end of section-4 -->
+            <!-- section-5 -->
+            <div class="section flex col gap-4 mb-2 mt-2" style="box-sizing: border-box;">
+                <div class="microapp-container" x-init="initializeMicroAppsCarousel()">
+                    <div class="microapp-content-box flex">
+                        <div class="swiper-carousel microAppCarousel mb-1 mt-1">
+                            <div class="swiper-wrapper">
+                                <template x-for="(microApp, microappIndex) in microappPlans[selectedPlan].products">
+                                    <div class="swiper-slide flex col cursor-pointer">
+                                        <div class="relative">
+                                            <img :src="microApp.imageUrl" alt="" class="feature-img">
+                                            <template x-if="microApp.offer">
+                                                <p class="abs-t ml-q mt-q ph-q pt-q pb-q b-rounded fs-xs bg-purple t-white" x-text="microApp.offer"></p>
+                                            </template>
+                                            <template x-if="microApp.type">
+                                                <p class="abs-bl p-h w-fc fs-xs" x-bind:style="{ 'background-color': microApp.type.badge_bg_color, 'color': microApp.type.badge_text_color }" style="border-bottom-left-radius: 8px;bottom: 0px;" x-text="microApp.type.type"></p>
+                                            </template>
+                                        </div>
+                                        <h3 class="fs-normal mt-h" x-text="microApp.title"></h3>
+                                        <p class="fs-normal pt-h" x-text="microApp.short_description"></p>
+                                        <!-- <button type="button" class="btn btn-primary mt-1 cursor-pointer">
+                                            Learn More
+                                        </button> -->
+                                    </div>
+                                </template>
+                            </div>
+                            <!-- <div class="swiper-pagination-microApp mt-1"></div>  -->
+                        </div>
+                        <div class="microapp-header">
+                            <h2 class="microapp-container-title fs-md-2 mt-2" x-text="microappPlans[selectedPlan].plan"></h2>
+                            <p class="microapp-container-subtitle mt-2 fs-normal fw-700 mb-1" x-text="microappPlans[selectedPlan].title"></p>
+                            <p class="microapp-container-text fs-normal" x-text="microappPlans[selectedPlan].short_description"></p>
+                            <p class="fs-normal mt-1 mb-1 offer-text" x-text="microappPlans[selectedPlan].offer"></p>
+                            <button type="button" class="btn btn-subscribe cursor-pointer mb-2">
+                                <a :href="microappPlans[selectedPlan].subscribe_cta" target="_blank" onclick="zforms_open_window(this.href, 648, 700); return false" style="color: #fff">
+                                    Find out more
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="microapp-content w-80p m-1 mt-2 p-2">
+                        <div class="content-card flex gap-1">
+                            <img :src="microappPlans[selectedPlan].selling_points[0].icon" height="40px" width="40px" alt="Privacy Icon">
+                            <!-- <h3 class="fs-med fw-500">Private Tenancy</h3> -->
+                            <p x-text="microappPlans[selectedPlan].selling_points[0].description">
+                            </p>
+                        </div>
+                        <div class="content-card flex gap-1">
+                            <img :src="microappPlans[selectedPlan].selling_points[1].icon" height="40px"  width="40px" alt="Digital Workspace Icon">
+                            <!-- <h3 class="fs-med fw-500">Digital Workspace</h3> -->
+                            <p x-text="microappPlans[selectedPlan].selling_points[1].description">
+                            </p>
+                        </div>
+                        <div class="content-card flex gap-1">
+                            <img :src="microappPlans[selectedPlan].selling_points[2].icon" height="40px"  width="40px" alt="Multi Tenancy Icon">
+                            <!-- <h3 class="fs-med fw-500">Multi-tenancy</h3> -->
+                            <p x-text="microappPlans[selectedPlan].selling_points[2].description">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 0f section-5 -->
+        </div>
+    </template>
+    <template x-if="!microappPlans">
+        <div class="flex center j-c w-100p h-75">
+            <div class="new-loader"></div>
+        </div>
+    </template>
+
+    <!-- New Section -->
+    <div class="baseline-plans min-h-35 j-c flex col bg-black">
+        <h2 class="t-white ta-c fs-large mb-3"> Extend your starter plan subscription with add-ons from a vast marketplace of apps</h2>
+        <div class="baseline-plans-content">
+            <div class="baseline-plans-sec flex j-sb center">
+                <div class="content-card flex col center">
+                    <div class="img-wrapper">
+                        <img src="https://cdn.sanity.io/images/7b7oo1uk/production/1de4ab6ba9e2922b7db932a5853c5162259f373d-513x513.svg" alt="ERP CMS Icon" class="feature-img">
+                    </div>
+                    <p class="fs-normal t-white mt-1">
+                        Choose your preferred apps, explore with a complimentary trial and seamlessly subscribe
+                    </p>
+                </div>
+                <div class="content-card flex col center">
+                    <div class="img-wrapper">
+                        <img src="https://cdn.sanity.io/images/7b7oo1uk/production/ab1cfeedeae2f05fbe376fe831821bb63a3008ad-513x513.svg" alt="ERP CMS Icon" class="feature-img">
+                    </div>
+                    <p class="fs-normal t-white mt-1">
+                        Streamline workflows for crew by consolidating apps, reducing overload and fatigue
+                    </p>
+                </div>
+                <div class="content-card flex col center">
+                    <div class="img-wrapper">
+                        <img src="https://cdn.sanity.io/images/7b7oo1uk/production/1b479b0c314414b18a451e0bd4c7245f6a583726-601x601.svg" alt="Volume Icon" class="feature-img">
+                    </div>
+                    <p class="fs-normal t-white mt-1">
+                        Overcome procurement hurdles, multi-vendor overheads and fast-track digitalisation
+                    </p>
+                </div>
+                <div class="content-card flex col center">
+                    <div class="img-wrapper">
+                        <img src="https://cdn.sanity.io/images/7b7oo1uk/production/77edd848a9a79c4b6270b818eff2cd8d7782129c-513x513.svg" alt="ERP CMS Icon" class="feature-img">
+                    </div>
+                    <p class="fs-normal t-white mt-1">
+                        Leverage the advantages of a unified app ecosystem through volume benefits
+                    </p>
+                </div>
+            </div>
+            <!-- <button type="button" class="btn btn-subscribe fw-500">Subscribe</button> -->
+        </div>
+    </div>
+    <!-- section-7 -->
+    <div class="section products-listing flex center col j-c" x-data="{allData:null,productData: null,userSelectedFilter: [], maximumCardsPerPage: 10, currentPage: 1,totalPaginationCount:0, getProductAndPageCount: async function() { 
+        let finalFilters = '';
+        this.productData = null,
+        this.totalPaginationCount = 0;
+        if(this.userSelectedFilter.length > 0) {
+            let conditionsQuery = this.userSelectedFilter.map(condition => ` '${condition}' in filter_tags[]->_id`).join(' || ');
+            conditionsQuery = `&& (${conditionsQuery})`;
+            finalFilters = conditionsQuery;
+        }
+        $.get('https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production',
+        {query: `[
+                count(*[_type == 'product' ${finalFilters}]),
+                *[_type =='product' ${finalFilters}]| order(title asc) [${(this.currentPage - 1) * this.maximumCardsPerPage}...${this.maximumCardsPerPage*this.currentPage - 1}]
+                {title,short_description,offer,type->{type,'badge_bg_color':badge_bg_color.hex,'badge_text_color':badge_text_color.hex}, 'imageUrl': horizontal_banner.asset->url, filter_tags[] ->{ _id, title } }
+                ]`}
+            ).then((res) => {
+                this.productData = res.result[1];
+                this.totalPaginationCount = res.result[0];
+                this.totalPaginationCount = Math.ceil(this.totalPaginationCount / this.maximumCardsPerPage);
+            });
+        } }"
+        x-init="getProductAndPageCount(),
+            $watch('currentPage',async (value, oldValue) => {
+                if(value == oldValue) {
+                    return;
+                }
+                getProductAndPageCount();
+            });
+        "
+    >
+        <div class="flex row gap-2">
+            <h4 class="fs-large f-700 mt-6 mb-2 ta-c">Maritime App Marketplace</h4>
+        </div>
+        <div class="row flex w-85p mb-8 mt-2 listing-and-filtering-area"
+            x-data="{ filterProduct:null, openOption: '' }"
+            x-init="$.get('https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type%3D%3D%22filter_types%22%5D%7Corder%28_createdAt+asc%29%7Btitle%2Cfilter%5B%5D-%3E%7B_id%2Ctitle%7D%7D').then((res) => filterProduct = res)">
+            <div class="flex row w-100p gap-2 content-container">
+                <div class="mFilters flex row gap-1 pt-h pb-h pl-1 pr-1 overflow-auto hide-scrollbar">
+                    <template x-if="filterProduct">
+                        <template x-for="(filterType, index) in filterProduct.result">
+                            <button x-text="`${filterType.title} ＋`" class="ph-2 pt-1 pb-1 fs-normal card-rounded-sm"
+                                style="flex: 0 0 60%;background-color: #EAEAEA;white-space: nowrap;" x-on:click="()=>{
+                                        openOption = filterType.title;
+                                        document.querySelector('#mFilter').showModal();
+                                    }"></button>
+                        </template>
+                    </template>
+                </div>
+                <div class="flex col w-17p filters">
+                    <div class="flex center h-4">
+                        <label class="f-700 fs-md-2">Filter Products</label>
+                    </div>
+                    <div class="flex col w-100p mt-1 card-light border-radius-8 prevent-select overflow-h">
+                        <template x-if="filterProduct">
+                            <template x-for="(filterType, index) in filterProduct.result"
+                                x-init="openOption = filterProduct.result[0].title">
+                                <div class="overflow-h">
+                                    <label class="flex j-sb p-1 f-700 fs-normal bb-grey-2 bg-grey"
+                                        @click="openOption = openOption === filterType.title ? '' : filterType.title">
+                                        <span x-text="filterType.title"></span>
+                                        <span x-show="openOption === filterType.title">﹣</span>
+                                        <span x-show="openOption !== filterType.title">＋</span>
+                                    </label>
+                                    <template x-for="filterItem in filterType.filter" class="listing-area">
+                                        <label class="flex gap-1 center" x-show="openOption === filterType.title">
+                                            <div class="pt-1 pb-1 bb-grey-2 p-1 w-100p fs-normal fw-500 flex center gap-h bg-white">
+                                                <input type="checkbox" @click="{productData:null,currentPage:1}"
+                                                    x-on:change="getProductAndPageCount()" name="product_filter[]"
+                                                    x-bind:value="filterItem._id" x-model="userSelectedFilter" />
+                                                <span x-text="filterItem.title"></span>
+                                            </div>
+                                        </label>
+                                    </template>
+                                </div>
+                            </template>
+                        </template>
+                        <template x-if="!filterProduct">
+                            <div class="flex col w-100p p-1 j-c center h-50">
+                                <span class="loader"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="flex col product-listing-container">
+                    <div class="h-4 flex center j-fe gap-1">
+                        <template x-if="totalPaginationCount >= 2">
+                            <template x-for="index in totalPaginationCount">
+                                <div class="w-40px h-40px flex center j-c card card-rounded-xs" x-bind:class="currentPage == index ? 'f-600 bg-cotton-candy': ''" x-on:click="currentPage = index" x-text="index"></div>
+                            </template>
+                        </template>
+                    </div>
+                    <div class="grid wrap gap-1 mt-1 mb-1 products">
+                        <template x-if="productData">
+                            <template x-for="product in productData">
+                                <div class="product-card flex col card-light p-1 border-radius-15px j-fs" x-data="{imageForeground: '#44164E66'}" @mouseover="imageForeground = 'transparent'"  @mouseover.away = "imageForeground = '#44164E66'">
+                                    <div class="overflow-h w-100p pb-1 relative overflow-h">
+                                        <div class="image-container w-100p relative" style="aspect-ratio: 1.9 / 1;">
+                                            <div class="transparent-fg abs-b w-100p h-100p border-radius-10px" x-bind:style="{'background-color': imageForeground}" ></div>
+                                            <img
+                                                :src="product.imageUrl"
+                                                class="w-100p of-cover border-radius-10px"
+                                                style="aspect-ratio: 1.9 / 1;"
+                                            />
+                                        </div>
+                                        <template x-if="product.offer">
+                                            <p class="abs-t ml-q mt-q ph-h pt-q pb-q card-rounded-xs fs-xs bg-purple t-white" x-text="product.offer"></p>
+                                        </template>
+                                        <template x-if="product.type">
+                                            <p class="abs-bl p-h w-fc fs-xs" x-bind:style="{ 'background-color': product.type.badge_bg_color, 'color': product.type.badge_text_color }" style="border-bottom-left-radius: 8px;bottom: 15px;" x-text="product.type.type"></p>
+                                        </template>
+                                    </div>
+                                    <div class="flex col gap-1 h-fc">
+                                        <span class="fs-normal f-700 l-h-150" x-text="product.title"></span>
+                                        <p class="fs-normal f-300" style="line-height: 24px;"
+                                            x-text="product.short_description"></p>
+                                        <template x-if="product && product.filter_tags">
+                                            <div class="flex row gap-h fw-500 wrap">
+                                                <template
+                                                    x-if="product.filter_tags.length > 0 && product.filter_tags[0].title">
+                                                    <p class="bg-cotton-candy-2 border-radius-15px ph-h pt-q pb-q b-cotton-candy-2 t-loft-black fs-xs"  style="white-space: nowrap;
+                                                    overflow: hidden;text-overflow: ellipsis;width: 70px;"
+                                                        x-text="product.filter_tags[0].title"></p>
+                                                </template>
+                                                <template
+                                                    x-if="product.filter_tags.length > 1 && product.filter_tags[1].title">
+                                                    <p class="bg-cotton-candy-2 border-radius-15px ph-h pt-q pb-q b-cotton-candy-2 t-loft-black fs-xs"  style="white-space: nowrap;
+                                                    overflow: hidden;text-overflow: ellipsis;width: 70px;"
+                                                        x-text="product.filter_tags[1].title"></p>
+                                                </template>
+                                                <template x-if="product.filter_tags.length > 2">
+                                                    <p class="bg-cotton-candy-2 ph-h pt-q pb-q b-cotton-candy-2 t-loft-black fs-xs"
+                                                        style="border-radius: 12px;"
+                                                        x-text="`+${product.filter_tags.length-2}`"></p>
+                                                </template>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                        <template x-if="!productData">
+                            <div class="flex col w-100p p-1 j-c center h-50">
+                                <span class="loader"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="h-4 flex center j-fe gap-1 mt-1">
+                        <template x-if="totalPaginationCount >= 2">
+                            <template x-for="index in totalPaginationCount">
+                                <div class="w-40px h-40px flex center j-c card card-rounded-xs" x-bind:class="currentPage == index ? 'f-600 bg-cotton-candy': ''"  x-on:click="currentPage = index"  x-text="index"></div>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+                <template x-if="filterProduct">
+                    <dialog id="mFilter">
+                        <div class="flex center j-fs mt-1 mb-1">
+                            <h4 class="ml-1" x-text="openOption"></h4>
+                        </div>
+                        <template x-for="tobeShownFilter in filterProduct.result.filter(defaultFilter => {
+                                if(defaultFilter.title === openOption) {return defaultFilter;}
+                                return;
+                            })">
+                            <template x-for="filter in tobeShownFilter.filter">
+                                <label class="flex gap-1 center">
+                                    <div class="pt-1 pb-1 p-1 w-100p fs-sm fw-500 flex center gap-q">
+                                        <input type="checkbox" @click="{productData:null,currentPage:1}"
+                                            x-on:change="getProductAndPageCount()" name="product_filter[]"
+                                            x-bind:value="filter._id" x-model="userSelectedFilter" />
+                                        <span x-text="filter.title"></span>
+                                    </div>
+                                </label>
+                            </template>
+                        </template>
+                        <div class="flex center j-c mt-1">
+                            <button class="bg-blue t-white ph-1 pt-h pb-h card-rounded-xs fs-normal" x-on:click="() => {
+                                    openOption = '';
+                                    document.querySelector('#mFilter').close();
+                                }">Close</button>
+                        </div>
+                    </dialog>
+                </template>
+            </div>
+        </div>
+    </div>
+    <!-- end of section-7 -->
+
+    <div class="section sec-3 pt-4 flex wrap j-c center m-auto mb-8">
+        <div class="sec-3-div flex col">
+            <h2 class="f-bold" style="color: #fff;">Supporting human sustainability by championing seafarers</h2>
+            <a class="t-white card-rounded-xs w-fc mt-2 flex center gap-h f-medium scale-on-hover"
+                style="background-color: #864AFC;padding: 0.8rem 2rem;"
+                href='https://forms.zohopublic.eu/frontmintegration/form/BookaDemoPopup/formperma/X2cHKx12QHdH4yfabtPjAGCsaeIG60kauGiWzds5uoY'
+                title="Book a Demo with FrontM" target='_blank'
+                onclick="zforms_open_window(this.href, 648, 700); return false"><span>Book a Demo</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" class="svg-arrow" viewBox="0 0 24 24"
+                    fill="white">
+                    <polygon
+                        points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- section-8 -->
+    <div class="section sec-8 min-h-50 center j-c" x-data="{cardData : null }" x-init="$.get('https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production', {
+                query:`*[_type=='post' && isTopChoice==true]{
+                    title,
+                    'related_categories': categories[]->title ,
+                    'imageUrl': mainImage.asset -> url,
+                    'article_url':'./article.html?slug='+slug.current
+                }`,
+                perspective:`published`
+            }).then((res) => cardData = res)">
+        <template x-if="cardData">
+            <div class="flex col gap-3 center j-c mb-6">
+                <h4 class="flex col center p-tb f-bold fs-large f-700 ta-c" style="color: #260030;">Thought Leadership</h4>
+                <div class="flex top-picks-cards blog-search-list overflow-auto j-fs hide-scrollbar">
+                    <template x-for="data in cardData.result">
+                        <a class="flex col card m-1 gap-h overflow-h b-rounded bg-white prevent-select scale-on-hover"
+                            :href="data.article_url" style="background-color:#FFF6FB">
+                            <img class="of-cover w-100p" :src="data.imageUrl" loading="lazy">
+                            <div class="m-0 p-1">
+                                <h6 class="fs-normal" style="color:#DC2FD5;margin: 0;"
+                                    x-text="data.related_categories[0]"></h6>
+                                <h5 class="mb-2 mt-1 fs-md-2 t-black"
+                                    style="-webkit-line-clamp: 3;line-clamp: 3;-webkit-box-orient: vertical;"
+                                    x-text="data.title"></h5>
+                            </div>
+                        </a>
+                    </template>
+                </div>
+            </div>
+        </template>
+        <template x-if="cardData == null">
+            <div class="flex col center j-c w-100p h-75 relative">
+                <div class="new-loader"></div>
+            </div>
+        </template>
+        <template x-if="!cardData">
+            <div class="abs-hc t-white" style="grid-column:1/4">Could not find results</div>
+        </template>
+    </div>
+    <!-- end of section-8 -->
+    <div class="container flex col center p-1 join-us-container-transparent-bg">
+        <h3 class="mt-8 t-white ta-c fs-large f-thin">Join us in shaping the <strong style="font-weight: bold;">future of work</strong> in maritime</h3>
+        <div class="flex j-sb mt-2 mb-8 gap-2 sec-last-btns grid">
+            <a class="t-white b-rounded mt-2 w-auto j-c flex center gap-h bg-purple-light scale-on-hover"
+                style="padding: 1rem 2rem;"
+                href='https://forms.zohopublic.eu/frontmintegration/form/ContactUs/formperma/xaIkirttr0iB4YlXye_4qzX4_OQpoCLb3jqdMQ4wAYg'
+                title="Contact Us" target='_blank' onclick="zforms_open_window(this.href, 648, 700); return false">
+                <span class="fs-normal">Get in touch</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white">
+                    <polygon
+                        points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707" />
+                </svg>
+            </a>
+
+            <a class="t-white b-rounded mt-2 w-auto j-c flex center gap-h bg-purple-light scale-on-hover"
+                style="padding: 1rem 2rem;"
+                href='https://forms.zohopublic.eu/frontmintegration/form/BookaDemoPopup/formperma/X2cHKx12QHdH4yfabtPjAGCsaeIG60kauGiWzds5uoY'
+                title="Book a Demo with FrontM" target='_blank'
+                onclick="zforms_open_window(this.href, 648, 700); return false">
+                <span class="fs-normal">Request a demo</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white">
+                    <polygon
+                        points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707" />
+                </svg>
+            </a>
+            <button
+                class="t-white b-rounded mt-2 j-c w-auto flex center gap-h bg-purple-light j-c fs-normal scale-on-hover"
+                style="padding: 1rem 2rem;" onclick="showDialog()">
+                <span class="fs-normal flex gap-q">Download <span class="f-medium">onship</span></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white">
+                    <polygon
+                        points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <footer class="container min-h-30 bg-footer flex col center j-c">
+        <div class="flex j-sb">
+            <div class="flex col footer-align-item">
+                <a href="/" class="w-fc"><img
+                        src="https://cdn.sanity.io/images/7b7oo1uk/production/a4dcd178f8c8ae9f39f69130cbd63163ddedafe8-900x400.png"
+                        alt="frontM Limited" width="auto" height="60px"
+                        srcset="https://cdn.sanity.io/images/7b7oo1uk/production/a4dcd178f8c8ae9f39f69130cbd63163ddedafe8-900x400.png"
+                        loading="lazy"></a>
+                <!--Zoho Campaigns Web-Optin Form Starts Here-->
+                <script type="text/javascript" src="https://rwbqin-zcmp.maillist-manage.eu/js/optin.min.js"
+                    onload="setupSF('sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9','ZCFORMVIEW',false,'light',false,'0')"></script>
+                <script type="text/javascript">function runOnFormSubmit_sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9(th) {
+                        /*Before submit, if you want to trigger your event, "include your code here"*/
+                    };</script>
+
+                <div id="sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9" class="footer-form"
+                    data-type="signupform">
+                    <div id="customForm">
+                        <div class="quick_form_8_css" name="SIGNUP_BODY">
+                            <div>
+                                <div id="SIGNUP_HEADING"></div>
+                                <div style="position:relative;">
+                                    <div id="Zc_SignupSuccess"
+                                        style="display:none;position:absolute;margin-left:4%;width:90%;background-color: white; padding: 3px; border: 3px solid rgb(194, 225, 154);  margin-top: 10px;margin-bottom:10px;word-break:break-all ">
+                                        <table width="100%" cellpadding="0" cellspacing="0" class="b-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="10%"><img class="successicon"
+                                                            src="https://rwbqin-zcmp.maillist-manage.eu/images/challangeiconenable.jpg"
+                                                            alt="" loading="lazy" /></td>
+                                                    <td><span id="signupSuccessMsg"
+                                                            style="color: rgb(73, 140, 132); font-family: sans-serif; font-size: 14px;word-break:break-word">&nbsp;&nbsp;Thank
+                                                            you for Signing Up</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <form method="POST" id="zcampaignOptinForm"
+                                    action="https://rwbqin-zcmp.maillist-manage.eu/weboptin.zc" target="_zcSignup">
+                                    <div class="flex j-c center gap-1 mt-2 mb-2 w-fc footer-form-row">
+                                        <div class="SIGNUP_FLD flex col j-fs"
+                                            style="margin-right: 0;width: fit-content;">
+                                            <input type="email" class="p-h t-white"
+                                                style="background-color: #212658;border-style: none;border-radius: 5px;"
+                                                placeholder="Email" changeitem="SIGNUP_FORM_FIELD" name="CONTACT_EMAIL"
+                                                id="EMBED_FORM_EMAIL_LABEL" required>
+                                            <div class="fs-xs t-red mt-h hide" id="errorMsgDiv">Please enter correct
+                                                email address</div>
+                                        </div>
+                                        <div class="SIGNUP_FLD" style="margin-left: 0;width: fit-content;">
+                                            <input class="p-h bg-white" style="border-style: none;border-radius: 5px;"
+                                                type="button" name="SIGNUP_SUBMIT_BUTTON" id="zcWebOptin" value="Join">
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="fieldBorder" value="">
+                                    <input type="hidden" id="submitType" name="submitType" value="optinCustomView">
+                                    <input type="hidden" id="emailReportId" name="emailReportId" value="">
+                                    <input type="hidden" id="formType" name="formType" value="QuickForm">
+                                    <input type="hidden" name="zx" id="cmpZuid" value="14ad52cf9c">
+                                    <input type="hidden" name="zcvers" value="2.0">
+                                    <input type="hidden" name="oldListIds" id="allCheckedListIds" value="">
+                                    <input type="hidden" id="mode" name="mode" value="OptinCreateView">
+                                    <input type="hidden" id="zcld" name="zcld" value="">
+                                    <input type="hidden" id="zctd" name="zctd" value="">
+                                    <input type="hidden" id="document_domain" value="">
+                                    <input type="hidden" id="zc_Url" value="rwbqin-zcmp.maillist-manage.eu">
+                                    <input type="hidden" id="new_optin_response_in" value="0">
+                                    <input type="hidden" id="duplicate_optin_response_in" value="0">
+                                    <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW">
+                                    <input type="hidden" id="zc_formIx" name="zc_formIx"
+                                        value="3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9">
+                                    <input type="hidden" id="viewFrom" value="URL_ACTION">
+                                    <span style="display: none" id="dt_CONTACT_EMAIL">1,true,6,Contact Email,2</span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="https://rwbqin-zcmp.maillist-manage.eu/images/spacer.gif" class="hide" id="refImage"
+                        onload="referenceSetter(this)" alt="" loading="lazy" />
+                </div>
+                <input type="hidden" id="signupFormType" value="QuickForm_Horizontal">
+                <div id="zcOptinOverLay" oncontextmenu="return false"
+                    style="display:none;text-align: center; background-color: rgb(0, 0, 0); opacity: 0.5; z-index: 100; position: fixed; width: 100%; top: 0px; left: 0px; height: 988px;">
+                </div>
+                <div id="zcOptinSuccessPopup"
+                    style="display:none;z-index: 9999;width: 800px; height: 40%;top: 84px;position: fixed; left: 26%;background-color: #FFFFFF;border-color: #E6E6E6; border-style: solid; border-width: 1px;  box-shadow: 0 1px 10px #424242;padding: 35px;">
+                    <span style="position: absolute;top: -16px;right:-14px;z-index:99999;cursor: pointer;"
+                        id="closeSuccess">
+                        <img src="https://rwbqin-zcmp.maillist-manage.eu/images/videoclose.png" alt="" loading="lazy" />
+                    </span>
+                    <div id="zcOptinSuccessPanel"></div>
+                </div>
+
+                <!--Zoho Campaigns Web-Optin Form Ends Here-->
+                <div class="flex row gap-1 mb-2 w-fc">
+                    <!-- <a href="https://twitter.com/FrontMPlatform"><img class="logo" loading="lazy" style="height: 44px;"
+                            src="https://cdn.sanity.io/images/7b7oo1uk/production/54b4175ebc8c7a3c5521a4cf0c9a2921e587e835-36x36.svg"
+                            alt="Follow us on X"
+                            srcset="https://cdn.sanity.io/images/7b7oo1uk/production/54b4175ebc8c7a3c5521a4cf0c9a2921e587e835-36x36.svg"></a> -->
+                    <a href="https://www.linkedin.com/company/frontm-limited"><img loading="lazy" class="logo"
+                            style="height: 44px;"
+                            src="https://cdn.sanity.io/images/7b7oo1uk/production/91903e5324f3983fb2ed3e63457ce568bd40f7f9-36x36.svg"
+                            alt="Follow us on LinkedIn"
+                            srcset="https://cdn.sanity.io/images/7b7oo1uk/production/91903e5324f3983fb2ed3e63457ce568bd40f7f9-36x36.svg"></a>
+                </div>
+            </div>
+
+            <div class="flex row wrap w-100p footer-nav footer-column-1-gap jc-e">
+
+                <ul class="flex gap-1 footer-mob-col">
+                    <li>
+                        <h6 class="t-white fs-normal">Solutions</h6>
+                    </li>
+                    <li><a class="fs-normal" href="./onship.html">Maritime Operators</a></li>
+                    <li><a class="fs-normal" href="./coming-soon.html">Solution Providers</a></li>
+                    <li><a class="fs-normal" href="./coming-soon.html">Service Providers</a></li>
+                    <li><a class="fs-normal" href="./coming-soon.html">Maritime Professionals</a></li>
+                </ul>
+                <ul class="flex gap-1 footer-mob-col">
+                    <li>
+                        <h6 class="t-white fs-normal">Company</h6>
+                    </li>
+                    <li><a class="fs-normal" href="https://platform.frontm.com/about">About Us</a> </li>
+                    <li><a class="fs-normal" href="./news.html">Press</a> </li>
+                    <li><a class="fs-normal" href="https://platform.frontm.com/investor-relations">Investor relations</a> </li>
+                    <li><a class="fs-normal" href="https://platform.frontm.com/careers">Careers</a> </li>
+                    <li><a class="fs-normal" href="https://platform.frontm.com/contact">Contact us</a> </li>
+                </ul>
+                <ul class="flex gap-1 footer-mob-col">
+                    <li>
+                        <h6 class="t-white fs-normal">Resources</h6>
+                    </li>
+                    <li><a class="fs-normal" href="./resourcesHub.html">Resources Hub</a> </li>
+                    <li><a class="fs-normal" href="https://help.frontm.com/hc/en-us">Help</a> </li>
+                    <li><a class="fs-normal" href="./terms-condition.html">Legal</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="fs-normal mt-2" style="color: #638dff;">© All rights reserved</p>
+    </footer>
+    <dialog id="downloadAppDialog"
+        class="fixed relative z-10 pt-2 pb-2 ta-c b-white border-radius-15px flex col center j-c gap-1 hide">
+        <button class='h1 f-thin absolute r-0 t-0 mr-1 pt-1' style="outline: none; font-size: 34px;"
+            onclick="closeDialog()">✕</button>
+        <img src="https://cdn.sanity.io/files/7b7oo1uk/production/67ca502a3f4fc31e2a34cc891b0f0cded942c33a.png"
+            alt="FrontM QR Code" loading="lazy"
+            srcset="https://cdn.sanity.io/files/7b7oo1uk/production/67ca502a3f4fc31e2a34cc891b0f0cded942c33a.png">
+        <h4 class="f-medium fs-n-3">Download <span class="f-bold">onship</span> now!</h4>
+        <p class="ta-c"><strong>onship</strong>, The Maritime Superapp, is a secure crew welfare and collaboration app.
+            It helps shipping companies connect teams from shore to ship and allows seafarers to stay connected with
+            friends and family.</p>
+        <div class='flex gap-4 center j-c'>
+            <a href='https://play.google.com/store/apps/details?id=com.frontm.onship&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'
+                target='_blank' class="flex j-c center">
+                <img class="of-fill" style="height:60px;" alt='Get it on Google Play' loading="lazy"
+                    src='https://cdn.sanity.io/images/7b7oo1uk/production/cb8126b32c2274e0394246b40bd0b7f9f847e44c-646x250.png' />
+            </a>
+            <a href="https://apps.apple.com/in/app/onship/id1491731188" target='_blank' class="flex j-c center">
+                <img class="of-cover h-40px" alt="Download on App Store" loading="lazy"
+                    src="https://cdn.sanity.io/images/7b7oo1uk/production/8f3e4f92038c36b9fbed661486b9277ba4a1c5c7-284x95.svg" />
+            </a>
+        </div>
+    </dialog>
+    <!-- scripts -->
+    <script defer src="https://unpkg.com/alpinejs-axios@latest/dist/api.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://tag.clearbitscripts.com/v1/pk_e371ccc2a8476117c19f70e730a0e8ab/tags.js"
+        referrerpolicy="strict-origin-when-cross-origin"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- join onship dialog script -->
+    <script>
+        function showDialog() {
+            const downloadAppDialog = document.querySelector('#downloadAppDialog');
+            // downloadAppDialog.classList.remove("hide");
+            downloadAppDialog.classList.add("show");
+            downloadAppDialog.show();
+        }
+
+        function closeDialog() {
+            const downloadAppDialog = document.querySelector('#downloadAppDialog');
+            // downloadAppDialog.classList.add("hide");
+            downloadAppDialog.classList.remove("show");
+            downloadAppDialog.close();
+        }
+    </script>
+
+    <script>
+        function initializeFeaturesCarousel() {
+            let coreFeaturesCarousel = new Swiper(".mySwiper", {
+                effect: "slide",
+                direction: "horizontal",
+                fade: true,
+                grabCursor: true,
+                spaceBetween: 10,
+                slidesPerView: 5,
+                freeMode: true,
+                watchSlidesProgress: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                    bulletShape: "ellipse",
+                    renderBullet: function(index, classname) {
+                        return '<span class="' + classname + '"><span class="inner-element"></span></span>'
+                    },
+                },
+                breakpoints: {
+                    280: {
+                        centeredSlides: true,
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        centeredSlides: false,
+                        slidesPerView: 5,
+                        spaceBetween: 20,
+                    },
+                },
+                scrollbar: {
+                    el: ".swiper-scrollbar",
+                    hide: true,
+                },
+                autoplay: {
+                    delay: 3000,
+                },
+                loop: true,
+            });
+        }
+    </script> 
+
+    <script>
+        var microAppCarousel;
+
+        function handleMicroappSelection(microappPlans, selectedPlan) {
+            microAppCarousel.destroy();
+            initializeMicroAppsCarousel();
+        }
+
+        function initializeMicroAppsCarousel() {
+            microAppCarousel = new Swiper(".microAppCarousel", {
+                effect: "slide",
+                direction: "horizontal",
+                fade: true,
+                grabCursor: true,
+                spaceBetween: 10,
+                slidesPerView: 'auto',
+                watchOverflow: true,
+                freeMode: true,
+                watchSlidesProgress: true,
+                pagination: {
+                    el: ".swiper-pagination-microApp",
+                    clickable: true,
+                    bulletShape: "ellipse",
+                },
+                breakpoints: {
+                    280: {
+                        centeredSlides: false,
+                        slidesPerView: 'auto',
+                        spaceBetween: 10,
+                    },
+                    768: {
+                        centeredSlides: false,
+                        slidesPerView: 'auto',
+                        spaceBetween: 10,
+                    },
+                    1024: {
+                        centeredSlides: false,
+                        slidesPerView: 'auto',
+                        spaceBetween: 10,
+                    },
+                    1920: {
+                        centeredSlides: false,
+                        slidesPerView: 'auto',
+                        spaceBetween: 10,
+                    }
+                },
+                scrollbar: {
+                    el: ".swiper-scrollbar",
+                    hide: true,
+                },
+                autoplay: {
+                    delay: 3000,
+                },
+                loop: true,
+            });
+        }
+    </script> 
+    <script defer src="../js/plan-btns.js"></script>
+</body>
+
+</html>

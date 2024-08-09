@@ -1,0 +1,145 @@
+.join {
+  min-height: 25vh;
+  padding: 3rem 3rem;
+  position: relative;
+}
+.join::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0b0a15 35%, #49254b) !important;
+  clip-path: ellipse(99.67% 55.32% at 50.93% 55.35%);
+  /* background: url("../assets/images/joinus/join-bg.svg") no-repeat top / cover; */
+  z-index: -1;
+}
+.join-wrapper {
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.join-title {
+  display: flex;
+  color: #fff;
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.join-btn {
+  display: flex;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Figtree";
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  background: #864afc;
+  max-width: 16.875rem;
+  outline: none;
+  border: none;
+  padding: 0.8rem 1.25rem;
+  color: white;
+  text-align: left;
+  margin-left: 1rem;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  gap: 0.5rem;
+}
+.join-btn:hover {
+  cursor: pointer;
+}
+
+.join-wrapper div {
+  grid-template-columns: 1fr 1fr;
+}
+
+.join-btn-icon {
+  display: flex;
+  /* display: inline-block;
+  vertical-align: bottom; */
+}
+
+/* Media queries --- bootstrap style */
+
+@media only screen and (max-width: 1400px) {
+}
+@media only screen and (max-width: 1200px) {
+  .join-btn {
+    width: 200px;
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 992px) {
+}
+@media only screen and (max-width: 768px) {
+  .join-wrapper div {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-btn-wrapper a {
+    width: 200px;
+    text-align: center;
+  }
+  .cta-btn-wrapper a {
+    padding: 1rem !important;
+  }
+  .join {
+    padding: 2rem 0.5rem;
+  }
+  .join-title {
+    font-size: 1.56rem;
+  }
+  .cta-btn-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+  .join-btn {
+    margin-top: 2rem;
+    width: 50%;
+    padding: 0.5rem 0.5rem;
+    margin-left: 0;
+  }
+  .join::after {
+    background-image: url("../assets/images/joinus/join-sm-bg.svg");
+  }
+}
+@media only screen and (max-width: 576px) {
+}
+
+.join::after {
+  clip-path: ellipse(124.67% 64.49% at 47.53% 65%);
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .join::after {
+    clip-path: ellipse(124.67% 65.49% at 47.53% 65%);
+  }
+  .join-wrapper {
+    min-height: 20vh;
+  }
+}
+
+@media only screen and (min-device-width: 820px) and (max-device-width: 1180px) and (orientation: portrait) {
+  .join::after {
+    clip-path: ellipse(124.67% 65.49% at 47.53% 65%);
+  }
+  .join-wrapper {
+    min-height: 20vh;
+  }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
+  .join::after {
+    clip-path: ellipse(124.67% 65.49% at 47.53% 65%);
+  }
+  .join-wrapper {
+    min-height: 20vh;
+  }
+}

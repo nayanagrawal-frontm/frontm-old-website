@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FrontM | Intelligent Collaboration</title>
+    <link
+      rel="shortcut icon"
+      href="https://cdn.sanity.io/images/7b7oo1uk/production/49efdfb595cd02ab3b7d8e0dea877c18c175e90f-280x280.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+    />
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  </head>
+  <body class="home" x-data="{ isDownloadAppDialogOpen: false }">
+    <div
+      class="section bg-purple-dark min-h-100 flex col j-sb gap-1 center relative bg-black hero-section-overlay"
+      x-data="{ isFullScreenMenuOpen: false }"
+    >
+      <div
+        x-show="isFullScreenMenuOpen"
+        class="bg-purple-dark fixed t-0 l-0 r-0 b-0 w-100 h-100 z-9999 flex col center j-c gap-1"
+        style="display: none"
+        @click.outside="isFullScreenMenuOpen = false"
+      >
+        <div class="w-90p flex col end">
+          <h6 class="mt-0 mb-q">Solutions</h6>
+          <ul class="flex col gap-h pl-0">
+            <li class="flex j-fe">
+              <a class="t-white" href="./pages/onship.html"
+                >Maritime Operators</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a class="t-white" href="./pages/coming-soon.html"
+                >Solution Providers</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a class="t-white" href="./pages/coming-soon.html"
+                >Service Providers</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a class="t-white" href="./pages/coming-soon.html"
+                >Maritime Professionals</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="w-90p flex col end hide">
+          <h6 class="mt-0 mb-q">Industry</h6>
+          <ul class="flex col pl-0">
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="https://help.frontm.com/hc/en-us/categories/4417753792401-Developers"
+                rel="noopener noreferrer"
+                >Maritime</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="w-90p flex col end">
+          <h6 class="mt-0 mb-q">Company</h6>
+          <ul class="flex col gap-h pl-0">
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="https://platform.frontm.com/about"
+                rel="noopener noreferrer"
+                >About Us</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="./pages/news.html"
+                rel="noopener noreferrer"
+                >Press</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="https://platform.frontm.com/investor-relations"
+                rel="noopener noreferrer"
+                >Investor Relations</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="https://platform.frontm.com/careers"
+                rel="noopener noreferrer"
+                >Careers</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="https://platform.frontm.com/contact"
+                rel="noopener noreferrer"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="w-90p flex col end">
+          <h6 class="mt-0 mb-q">Resources</h6>
+          <ul class="flex col gap-h pl-0">
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="./pages/resourcesHub.html"
+                rel="noopener noreferrer"
+                >Resources Hub</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="https://help.frontm.com/hc/en-us"
+                rel="noopener noreferrer"
+                >Help</a
+              >
+            </li>
+            <li class="flex j-fe">
+              <a
+                class="t-white"
+                href="./pages/terms-condition.html"
+                rel="noopener noreferrer"
+                >Legal</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="flex j-fe w-90p">
+          <button
+            @click="isFullScreenMenuOpen = !isFullScreenMenuOpen"
+            class="t-blue pb-h pt-h ta-e"
+            style="padding-right: 0px"
+          >
+            Close
+          </button>
+          <!-- <a href="#" class="t-blue pb-h pt-h w-45p b-rounded b-blue ta-c">Sign-In</a> -->
+        </div>
+      </div>
+      <div
+        class="absolute t-0 hero-bg flex col j-c center z-0 overflow-h"
+        style="
+          background: radial-gradient(
+              ellipse 35% 65% at 0% 20%,
+              #638dff66 0 1%,
+              transparent
+            ),
+            radial-gradient(
+              ellipse 55% 75% at 90% 80%,
+              #62228a88 0 1%,
+              transparent
+            ),
+            transparent;
+        "
+      >
+        <div class="layer-1 w-100p h-100p flex col j-c center overflow-h">
+          <div class="layer-2 w-100p h-100p"></div>
+        </div>
+      </div>
+      <dialog>
+        <iframe
+          aria-label="Book a Demo with FrontM"
+          frameborder="0"
+          style="height: 500px; width: 99%; border: none"
+          src="https://forms.zohopublic.eu/frontmintegration/form/BookaDemoPopup/formperma/X2cHKx12QHdH4yfabtPjAGCsaeIG60kauGiWzds5uoY"
+        ></iframe>
+      </dialog>
+      <header class="content-area-w z-100 prevent-select">
+        <a href="#"
+          ><img
+            class="logo"
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/654c47c76962cde4e86033bb436a011356c5559d-716x253.svg"
+            alt="frontM Limited"
+            class="of-contain"
+        /></a>
+        <nav>
+          <ul class="t-white flex gap-2 wide-menu">
+            <li class="relative" x-data="{ isOpen: false }">
+              <button
+                @click="isOpen = !isOpen"
+                class="t-white fs-normal flex gap-q bg-transparent header-menu-item"
+              >
+                Solutions<img
+                  src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                  alt="Down Arrow"
+                />
+              </button>
+              <div
+                x-show="isOpen"
+                class="bg-purple-dark absolute top-40px card-rounded-sm p-1 r-0 dd-bs"
+                style="display: none"
+                @click.outside="isOpen = false"
+              >
+                <ul class="pl-0 flex col gap-1">
+                  <li class="fs-normal t-white header-menu-item">
+                    <a class="t-white" href="./pages/onship.html"
+                      >Maritime Operators</a
+                    >
+                  </li>
+                  <li class="fs-normal t-white header-menu-item">
+                    <a class="t-white" href="./pages/coming-soon.html"
+                      >Solution Providers</a
+                    >
+                  </li>
+                  <li class="fs-normal t-white header-menu-item">
+                    <a class="t-white" href="./pages/coming-soon.html"
+                      >Service Providers</a
+                    >
+                  </li>
+                  <li class="fs-normal t-white header-menu-item">
+                    <a class="t-white" href="./pages/coming-soon.html"
+                      >Maritime Professionals</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="relative hide" x-data="{ isOpen: false }">
+              <button
+                @click="isOpen = !isOpen"
+                class="t-white fs-normal flex gap-q bg-transparent header-menu-item"
+                onclick=""
+              >
+                Industry<img
+                  src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                  alt="Down Arrow"
+                />
+              </button>
+              <div
+                x-show="isOpen"
+                class="bg-purple-dark absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs"
+                style="display: none"
+                @click.outside="isOpen = false"
+              >
+                <ul class="pl-0 flex col gap-1">
+                  <li>
+                    <a
+                      class="fs-normal t-white"
+                      href="https://help.frontm.com/hc/en-us/categories/4417753792401-Developers"
+                      rel="noopener noreferrer"
+                      >Maritime</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li style="position: relative" x-data="{ isOpen: false }">
+              <button
+                @click="isOpen = !isOpen"
+                class="t-white fs-normal flex gap-q bg-transparent header-menu-item"
+                onclick=""
+              >
+                Company<img
+                  src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                  alt="Down Arrow"
+                />
+              </button>
+              <div
+                x-show="isOpen"
+                class="bg-purple-dark absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs"
+                style="
+                  display: none;
+                  box-shadow: -9px 7px 13px rgb(45 45 45 / 15%);
+                "
+                @click.outside="isOpen = false"
+              >
+                <ul class="pl-0 flex col gap-1">
+                  <li>
+                    <a
+                      class="fs-normal t-white header-menu-item"
+                      href="https://platform.frontm.com/about"
+                      rel="noopener noreferrer"
+                      >About Us</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="fs-normal t-white header-menu-item"
+                      href="./pages/news.html"
+                      rel="noopener noreferrer"
+                      >Press</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="fs-normal t-white header-menu-item"
+                      href="https://platform.frontm.com/investor-relations"
+                      rel="noopener noreferrer"
+                      >Investor Relations</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="fs-normal t-white header-menu-item"
+                      href="https://platform.frontm.com/careers"
+                      rel="noopener noreferrer"
+                      >Careers</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="fs-normal t-white header-menu-item"
+                      href="https://platform.frontm.com/contact"
+                      rel="noopener noreferrer"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li style="position: relative" x-data="{ isOpen: false }">
+              <button
+                @click="isOpen = !isOpen"
+                class="t-white fs-normal flex gap-q bg-transparent header-menu-item"
+                onclick=""
+              >
+                Resources<img
+                  src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                  alt="Down Arrow"
+                />
+              </button>
+              <div
+                x-show="isOpen"
+                class="bg-purple-dark absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs"
+                style="display: none"
+                @click.outside="isOpen = false"
+              >
+                <ul class="pl-0 flex col gap-1">
+                  <li>
+                    <a
+                      class="fs-normal header-menu-item t-white"
+                      href="./pages/resourcesHub.html"
+                      rel="noopener noreferrer"
+                      >Resources Hub</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="fs-normal t-white header-menu-item"
+                      href="https://help.frontm.com/hc/en-us"
+                      rel="noopener noreferrer"
+                      >Help</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="fs-normal t-white header-menu-item"
+                      href="./pages/terms-condition.html"
+                      rel="noopener noreferrer"
+                      >Legal</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="relative hide">
+              <a
+                class="gap-h b-blue t-blue b-rounded fs-normal"
+                href="#"
+                style="padding: 0.6rem 2rem"
+                >Sign-In</a
+              >
+            </li>
+          </ul>
+
+          <div>
+            <button
+              @click="isFullScreenMenuOpen = !isFullScreenMenuOpen"
+              id="m-menu"
+              class="t-white"
+            >
+              <img
+                src="https://cdn.sanity.io/images/7b7oo1uk/production/c6b288b140589ecbce259a615c708a893ba2727a-24x24.svg"
+                alt="Mobile Menu"
+                srcset="
+                  https://cdn.sanity.io/images/7b7oo1uk/production/c6b288b140589ecbce259a615c708a893ba2727a-24x24.svg
+                "
+              />
+            </button>
+          </div>
+        </nav>
+      </header>
+      <div
+        class="flex col center j-c content-area-w hero-content prevent-select"
+        x-data="{isColumn: (window.innerWidth > window.innerHeight ? 'landscape-primary' : 'portrait-primary') === 'portrait-primary' }"
+        x-init="() => {
+                window.addEventListener('resize', function() {
+                    var orientation = window.innerWidth > window.innerHeight ? 'landscape-primary' : 'portrait-primary';
+                    isColumn = orientation === 'portrait-primary';
+                });
+            }"
+      >
+        <div
+          class="content-area-2col-w t-white flex h-25 col j-c content-area center ta-c mt-8 z-3"
+        >
+          <h5 class="fw-500">The Superapp Platform to</h5>
+          <h1 class="fs-xxl f-bold wordsList overflow-h uppercase flex center">
+            <span class="swap-word hide" style="color: #00c9ff">Connect</span>
+            <span class="swap-word hide" style="color: #ffc300">Engage</span>
+            <span class="swap-word hide" style="color: #00c9ff"
+              >Care
+              <span class="lowercase f-thin fs-medium" style="color: #ffffff"
+                >for</span
+              ></span
+            >
+            <span class="swap-word hide" style="color: #ff5400">Entertain</span>
+            <span class="swap-word hide" style="color: #00e720">Inform</span>
+            <span class="swap-word hide" style="color: #ffc300">Train</span>
+            <span class="swap-word hide" style="color: #ff5400">Certify</span>
+          </h1>
+          <h5 class="fw-500">Crews, Frontline Workforces & Customers</h5>
+
+          <a
+            class="t-white card-rounded-xs w-fc mt-2 flex center gap-h f-medium scale-on-hover"
+            style="background-color: #864afc; padding: 0.8rem 2rem"
+            href="https://forms.zohopublic.eu/frontmintegration/form/BookaDemoPopup/formperma/X2cHKx12QHdH4yfabtPjAGCsaeIG60kauGiWzds5uoY"
+            title="Book a Demo with FrontM"
+            target="_blank"
+            onclick="zforms_open_window(this.href, 648, 700); return false"
+          >
+            Learn More<svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="white"
+            >
+              <polygon
+                points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
+              />
+            </svg>
+          </a>
+        </div>
+        <lottie-player
+          src="https://cdn.sanity.io/files/7b7oo1uk/production/0b36bf8c095c4d39778b926d5f5b37cb6d424a7a.json"
+          background="transparent"
+          speed="1"
+          class="intelligent-collab w-100p"
+          loop
+          autoplay
+          style="opacity: 0.2; width: 120%; margin-top: -10%"
+        ></lottie-player>
+      </div>
+      <div
+        class="w-100p flex col j-c center logo-carousel-bottom z-3 relative overflow-h"
+      >
+        <h5 class="f-bold mt-2 ta-c pad-r t-white">
+          Making a Difference Together
+        </h5>
+        <!-- <div class="w-15 h-13 abs-bl z-2 ltr-whiteg"></div>
+            <div class="w-15 h-13 abs-br z-2 rtl-whiteg"></div> -->
+        <div class="marquee-scroll mt-4 mb-4"></div>
+      </div>
+    </div>
+    <!-- <div id="breakapart_animation" class="section flex col j-c w-100 h-100 of-cover"></div> -->
+    <div
+      class="four-cards container min-h-50 flex col j-c center mb-8 mt-6 mar-0"
+    >
+      <div class="flex center j-se wrap gap-1">
+        <div class="h-50p b-rounded relative flex col center j-c gap-h">
+          <img
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/86030866685bcd9135f4f7a98b99ea5a04471b24-3125x2084.webp"
+            class="of-contain"
+            alt="For Maritime Operators"
+            srcset="
+              https://cdn.sanity.io/images/7b7oo1uk/production/86030866685bcd9135f4f7a98b99ea5a04471b24-3125x2084.webp
+            "
+          />
+          <h5 class="t-white ta-c fs-md-2">For Maritime Operators</h5>
+          <p
+            class="t-white fs-normal ta-c ch-50 mt-h"
+            style="opacity: 70%; line-height: 1.8rem"
+          >
+            The silver bullet for modern ship and crew management to reduce risk
+            & boost your bottom line. Accelerate your goals with our
+            comprehensive app marketplace
+          </p>
+          <a
+            class="pb-1 pt-1 mt-h t-white ta-c w-fc flex center fs-normal gap-q scale-on-hover"
+            style="
+              background-color: #864afc;
+              padding-inline: 2rem;
+              border-radius: 10px;
+            "
+            href="./pages/onship.html"
+            >Subscribe now</a
+          >
+        </div>
+        <div class="h-50p b-rounded relative flex col center j-c gap-h">
+          <img
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/fa10f75b3a0c01768908d89a23949eae9c51e887-3125x2084.webp"
+            class="of-contain"
+            alt="For Solution Providers"
+            srcset="
+              https://cdn.sanity.io/images/7b7oo1uk/production/fa10f75b3a0c01768908d89a23949eae9c51e887-3125x2084.webp
+            "
+          />
+          <h5 class="t-white ta-c fs-md-2">For Solution Providers</h5>
+          <p
+            class="t-white fs-normal ta-c ch-50 mt-h"
+            style="opacity: 70%; line-height: 1.8rem"
+          >
+            Join our leading maritime app marketplace to expand your visibility.
+            Leverage the FrontM low-code frameworks for a 10X faster
+            <span style="white-space: nowrap">time-to-market</span>
+          </p>
+          <a
+            class="pb-1 pt-1 mt-h t-white ta-c w-fc flex center fs-normal gap-q scale-on-hover"
+            style="
+              background-color: #864afc;
+              padding-inline: 2rem;
+              border-radius: 10px;
+            "
+            href="https://forms.zohopublic.eu/frontmintegration/form/SolutionProvidersSignUp/formperma/YzmieJNgiMulBASmTyFD1D7f3ZhQ6yFmByBPIjHjV6U"
+            title="Solution Providers Sign Up"
+            target="_blank"
+            onclick="zforms_open_window(this.href, 648, 700); return false"
+            >Build with Us</a
+          >
+        </div>
+        <div class="h-50p b-rounded relative flex col center j-c gap-h">
+          <img
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/70791bd679554fcff14b6bad1cabaeaa54bd5397-3126x2085.webp"
+            class="of-contain"
+            alt="For Service Providers & Integrators"
+            srcset="
+              https://cdn.sanity.io/images/7b7oo1uk/production/70791bd679554fcff14b6bad1cabaeaa54bd5397-3126x2085.webp
+            "
+          />
+          <h5 class="t-white ta-c fs-md-2">
+            For Service Providers & Integrators
+          </h5>
+          <p
+            class="t-white fs-normal ta-c ch-50 mt-h"
+            style="opacity: 70%; line-height: 1.8rem"
+          >
+            Create your differentiated offering and bolster customer loyalty by
+            integrating FrontM SDK and app marketplace into your product
+            portfolio
+          </p>
+          <a
+            class="pb-1 pt-1 mt-h t-white ta-c w-fc flex center fs-normal gap-q scale-on-hover"
+            style="
+              background-color: #864afc;
+              padding-inline: 2rem;
+              border-radius: 10px;
+            "
+            href="./pages/coming-soon.html"
+            >Integrate & Resell</a
+          >
+        </div>
+        <div class="h-50p b-rounded relative flex col center j-c gap-h">
+          <img
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/31674e919d8b1bb1a29a9902af79ab0ccea35279-3125x2084.webp"
+            class="of-contain"
+            alt="For Maritime Professionals"
+            srcset="
+              https://cdn.sanity.io/images/7b7oo1uk/production/31674e919d8b1bb1a29a9902af79ab0ccea35279-3125x2084.webp
+            "
+          />
+          <h5 class="t-white ta-c fs-md-2">For Maritime Professionals</h5>
+          <p
+            class="t-white fs-normal ta-c ch-50 mt-h"
+            style="opacity: 70%; line-height: 1.8rem"
+          >
+            Connect with industry peers and elevate your seafaring experience
+            with news, jobs, entertainment, wellbeing, AI & learning at your
+            fingertips. Free for life!
+          </p>
+          <button
+            class="pb-1 pt-1 mt-h t-white ta-c w-fc flex center fs-normal gap-q scale-on-hover"
+            style="
+              background-color: #864afc;
+              padding-inline: 2rem;
+              border-radius: 10px;
+            "
+            onclick="showDialog()"
+          >
+            <span>Join</span><span class="f-bold">onship</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-black container defrag-container flex col center j-c relative h-adj"
+    >
+      <div
+        class="absolute l-0 t-0 h-100p w-100p z-0"
+        style="
+          background: radial-gradient(
+              ellipse 35% 65% at 0% 20%,
+              #638dff66 0 1%,
+              transparent
+            ),
+            radial-gradient(
+              ellipse 55% 75% at 90% 80%,
+              #62228a88 0 1%,
+              transparent
+            ),
+            transparent;
+        "
+      ></div>
+      <h3 class="mt-6 t-white ta-c fs-large f-700">
+        Navigate Beyond the Crew Crisis
+      </h3>
+      <div
+        class="crew-engagement-container section flex col j-c center gap-4 t-white ta-c z-1 mt-4"
+      >
+        <div class="crew-engagement flex j-sb mb-6 align-0">
+          <div class="flex col crew-engagement-stat start pad-botto">
+            <div style="min-height: 2rem" class="w-100p">
+              <h3 class="t-yellow-green fs-xl align-0 ta-c">90,000</h3>
+            </div>
+            <p
+              class="fs-normal ta-l align-0"
+              style="
+                opacity: 75%;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                text-wrap: wrap;
+                line-height: 1.8rem !important;
+              "
+            >
+              Additional trained <strong>officers are needed</strong> to operate
+              the world’s fleet by 2026. Attract, retain and upskill crew to
+              keep ahead of the curve
+            </p>
+          </div>
+          <div class="flex col crew-engagement-stat start pad-botto">
+            <div style="min-height: 2rem" class="w-100p">
+              <h3 class="t-yellow-green fs-xl align-0 ta-c w-100p">
+                96<span class="fs-large">%</span>
+              </h3>
+            </div>
+            <p
+              class="fs-normal ta-l align-0"
+              style="
+                opacity: 75%;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                text-wrap: wrap;
+                line-height: 1.8rem !important;
+              "
+            >
+              Incidents at sea result from <strong>human errors</strong>. Target
+              a 50% reduction by empowering your next-gen team with next-gen
+              solutions
+            </p>
+          </div>
+          <div class="flex col crew-engagement-stat start">
+            <div style="min-height: 2rem" class="w-100p">
+              <h3 class="t-yellow-green fs-xl align-0 ta-c w-100p">
+                1000<span class="fs-large">s</span>
+              </h3>
+            </div>
+            <p
+              class="fs-normal ta-l align-0"
+              style="
+                opacity: 75%;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                text-wrap: wrap;
+                line-height: 1.8rem !important;
+              "
+            >
+              Different tools for your operations can cause chaos. Future-proof
+              your digital roadmap with a dynamic one-stop solution
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section min-h-75 flex col j-fs center">
+      <div style="min-height: 2rem" class="w-100p">
+        <h3 class="mt-6 ta-c fs-large f-700" style="color: purple">
+          A Unified Workspace To Digitalise Your Frontline Workforce
+        </h3>
+      </div>
+      <div class="collab-vid-container flex j-c center mb-6 mt-2">
+        <video
+          playsinline
+          loop
+          muted
+          autoplay
+          data-setup='{"fluid": true}'
+          class="video-js vjs-default-skin bg-transparent"
+        >
+          <source
+            src="https://cdn.sanity.io/files/7b7oo1uk/production/d192374fe8b40131f636815a18d5aa9b2984dbc1.mp4"
+            type="video/mp4"
+          />
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading
+            to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank"
+              >supports HTML5 video</a
+            >
+          </p>
+        </video>
+      </div>
+    </div>
+    <div
+      class="why-frontm container flex col center t-white"
+      x-data="{ whyFrontMResponse: null }"
+      x-init="fetch('https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type%3D%3D%22why_frontm%22%5D%7Corder%28_createdAt+asc%29%7B%27iconUrl%27%3Aicon.asset-%3Eurl%2Ctitle%2Cdescription%7D').then((res) => res.json().then((data) => whyFrontMResponse = data.result))"
+    >
+      <h3 class="ta-c fs-large mt-6 mb-4">Why FrontM's Superapp Platform</h3>
+      <div class="w-85p grid mb-6">
+        <template x-if="whyFrontMResponse">
+          <template x-for="whyFrontM in whyFrontMResponse">
+            <div
+              class="w-100p flex col center j-c pl-2 pr-2 pt-2 pb-2 gap-2"
+              style="box-sizing: border-box"
+            >
+              <div class="w-100p" style="min-height: 3rem">
+                <div class="flex row" style="align-items: baseline">
+                  <img
+                    :src="whyFrontM.iconUrl"
+                    alt=""
+                    class="of-contain"
+                    style="height: 40px"
+                  />
+                  <h5
+                    class="t-light-purple fs-md-2 align-0 pad-botto w-fc ta-c pl-1"
+                    x-text="whyFrontM.title"
+                  ></h5>
+                </div>
+              </div>
+              <p
+                class="fs-normal"
+                style="opacity: 75%; line-height: 150%"
+                x-text="whyFrontM.description"
+              ></p>
+            </div>
+          </template>
+        </template>
+      </div>
+      <!-- <template x-if="whyFrontMResponse">
+            <template x-for="whyFrontM in whyFrontMResponse.data.result">
+                <div class="w-85p grid gap-1 mb-4">
+                    <div class="img-container flex center">
+                        <img :src="whyFrontM.iconUrl" alt="" class="of-contain"/>
+                    </div>
+                    <div class="content flex center j-fs">
+                        <div class="flex col gap-q">
+                            <h5 class="t-yellow-green fs-md-3 align-0 pad-botto w-fc" x-text="whyFrontM.title"></h5>
+                            <p class="fs-n-2 align-0" style="opacity: 75%;line-height: 150%;" x-text="whyFrontM.description"></p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </template> -->
+    </div>
+    <div
+      class="testimonial-container flex col center mt-4 relative mob-pb-0"
+      x-data="{testimonials: null}"
+      x-init="fetch('https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22testimonial%22%26%26%27home%27in+pages%5D+%7B%0A++testimonial%2C+name%2C+designation%2C+%22imageUrl%22%3A+image.asset-%3Eurl%0A%7D&perspective=published').then((res) => res.json().then((data) => testimonials = data.result))"
+    >
+      <!-- <template x-if="testimonials">
+            <h3 class="fs-lg-2 f-700 ta-c w-85p">What Industry Leaders Say</h3>
+        </template> -->
+      <template x-if="testimonials">
+        <div
+          class="swiper testimonial-slider-v2 flex col j-fs center mt-4 mb-4 w-90p h-100p"
+          x-init="initialiseTestimonialSlider()"
+        >
+          <div class="swiper-slides-container">
+            <div class="swiper-wrapper">
+              <template x-for="(testimonial, index) in testimonials">
+                <div
+                  class="swiper-slide flex col j-fs gap-1 min-h-20"
+                  :key="index"
+                  x-bind:data-swiper-slide-index="index"
+                >
+                  <div class="flex center gap-1 ph-2 pt-2">
+                    <img
+                      :src="testimonial.imageUrl"
+                      :srcset="testimonial.imageUrl"
+                      style="
+                        height: 4.375rem;
+                        width: 4.375rem;
+                        border-radius: 50%;
+                      "
+                    />
+                    <div class="flex col gap-q">
+                      <h3 class="fs-md-2" x-text="testimonial.name"></h3>
+                      <h4
+                        class="fs-normal f-thin"
+                        style="color: #626e85"
+                        x-text="testimonial.designation"
+                      ></h4>
+                    </div>
+                  </div>
+                  <p
+                    class="fs-normal ph-2 pb-2"
+                    style="color: #626e85; line-height: 24px"
+                    x-text="testimonial.testimonial"
+                  ></p>
+                </div>
+              </template>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </template>
+      <template x-if="!testimonials">
+        <div style="height: 18rem" class="flex col j-c center">
+          <div class="loader"></div>
+        </div>
+      </template>
+    </div>
+    <div
+      class="featured-reads container min-h-50 bg-cream flex col center p-1"
+      x-data="{
+            featuredArticles: {},
+            selectedOption : 0,
+        }"
+      x-init="fetch('https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production?query=%5B*%5B_type%3D%3D%27post%27%26%26%28isAFeaturedPost%3D%3Dtrue%29%26%26%27News%27+in+categories%5B%5D-%3Etitle%5D%7Corder%28_createdAt+desc%29%7B%27tags%27%3Arelatedtags%5B%5D-%3Etitle%2C%27categories%27%3Acategories%5B%5D-%3Etitle%2Cslug%2C%27imageUrl%27%3A+mainImage.asset-%3Eurl%2Ctitle%2C%27article_url%27%3A%27.%2Fpages%2Farticle.html%3Fslug%3D%27%2Bslug.current%7D%2C*%5B_type%3D%3D%27post%27%26%26%28isAFeaturedPost%3D%3Dtrue%29%26%26%27Thought+leadership%27+in+categories%5B%5D-%3Etitle%5D%7Corder%28_createdAt+desc%29%7B%27tags%27%3A+relatedtags%5B%5D-%3Etitle%2C%27categories%27%3A+categories%5B%5D-%3Etitle%2Cslug%2Ctitle%2C%27imageUrl%27%3A+mainImage.asset-%3Eurl%2C%27article_url%27%3A%27.%2Fpages%2Farticle.html%3Fslug%3D%27%2Bslug.current%7D%2C*%5B_type+%3D%3D+%27post%27%26%26%28isAFeaturedPost+%3D%3D+true%29%26%26%27Whitepapers%27+in+categories%5B%5D-%3Etitle%5D%7Corder%28_createdAt+desc%29%7B%27tags%27%3Arelatedtags%5B%5D-%3Etitle%2C%27categories%27%3Acategories%5B%5D-%3Etitle%2Cslug%2Ctitle%2C%27imageUrl%27%3A+mainImage.asset-%3Eurl%2C%27article_url%27%3A%27.%2Fpages%2Farticle.html%3Fslug%3D%27%2Bslug.current%7D%5D').then((res) => res.json().then((data) => featuredArticles = data.result))"
+    >
+      <template x-if="featuredArticles">
+        <div class="w-80p flex col center j-c gap-1 mt-4 ta-c">
+          <h3 class="fs-large f-700">Featured Reads</h3>
+          <!-- <h5 class="f-normal fs-normal">Learn how crew engagement is paving the way to maritime sustainability</h5> -->
+          <select
+            x-model="selectedOption"
+            id="articleTypesMobile"
+            class="scale-on-hover"
+          >
+            <option value="0">News</option>
+            <option value="1">Thought Leadership</option>
+            <option value="2">Whitepapers</option>
+          </select>
+          <div
+            id="articleTypes"
+            class="w-100p flex j-c mt-4 gap-1"
+            style="font-size: large"
+          >
+            <div class="flex j-c center">
+              <input
+                class="article_radio_input"
+                type="radio"
+                id="news"
+                name="articles"
+                value="0"
+                @click="selectedOption = 0"
+                x-bind:checked="selectedOption === 0"
+              />
+              <label
+                class="article_radio_label fs-md-2 scale-on-hover"
+                for="news"
+                :class="selectedOption === 0 ? 'f-bold' : ''"
+                >News</label
+              >
+            </div>
+            <div class="flex j-c center">
+              <input
+                class="article_radio_input"
+                type="radio"
+                id="thought_leadership"
+                name="articles"
+                value="1"
+                @click="selectedOption = 1"
+                x-bind:checked="selectedOption === 1"
+              />
+              <label
+                class="article_radio_label fs-md-2 scale-on-hover"
+                for="thought_leadership"
+                :class="selectedOption === 1 ? 'f-bold' : ''"
+                >Thought Leadership</label
+              >
+            </div>
+            <div class="flex j-c center">
+              <input
+                class="article_radio_input"
+                type="radio"
+                id="whitepapers"
+                name="articles"
+                value="2"
+                @click="selectedOption = 2"
+                x-bind:checked="selectedOption === 2"
+              />
+              <label
+                class="article_radio_label fs-md-2 scale-on-hover"
+                for="whitepapers"
+                :class="selectedOption === 2 ? 'f-bold' : ''"
+                >Whitepapers</label
+              >
+            </div>
+          </div>
+          <div class="w-100p mt-4 featured-reades-swiper">
+            <div class="swiper-wrapper flex pt-1 pb-2">
+              <template x-for="article in featuredArticles[selectedOption]">
+                <a
+                  draggable="false"
+                  class="swiper-slide card_background featured-reads-card overflow-h scale-on-hover relative ml-q"
+                  x-bind:style="`background: url('${article.imageUrl}');cursor: pointer;background-position: center;background-repeat: no-repeat;background-size: cover;`"
+                  x-data="{isHover: false}"
+                  :href="article.article_url"
+                  @mouseover="isHover = true"
+                  @mouseleave="isHover = false"
+                >
+                  <div
+                    class="absolute l-0 t-0 w-100p h-100p flex col j-sb gradient-foreground"
+                  >
+                    <h4
+                      class="ta-s f-medium fs-normal mt-1 ml-1 mr-1"
+                      x-text="article.title"
+                    ></h4>
+                    <p
+                      class="ta-e flex center j-fe gap-h fs-normal mb-1 ml-1 mr-1"
+                    >
+                      <span>Read more</span
+                      ><img
+                        src="https://cdn.sanity.io/images/7b7oo1uk/production/bbbbb6b8975458ba932bf87c5698d239eddc1f2c-20x20.svg"
+                        x-show="!isHover"
+                        alt="Arrow icon"
+                      /><img
+                        src="https://cdn.sanity.io/images/7b7oo1uk/production/3724582b9e8b1999e770a7f659bf5d7fa8b92a30-20x20.svg"
+                        x-show="isHover"
+                        alt="Arrow icon"
+                      />
+                    </p>
+                  </div>
+                </a>
+              </template>
+            </div>
+          </div>
+          <a
+            href="./pages/resourcesHub.html"
+            class="mt-2 mb-4 flex center t-purple-light gap-h f-medium fs-normal scale-on-hover"
+          >
+            <span>View More</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="#864AFC"
+            >
+              <polygon
+                points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
+              />
+            </svg>
+          </a>
+        </div>
+      </template>
+      <template x-if="!featuredArticles">
+        <div class="loader"></div>
+      </template>
+    </div>
+    <div class="container flex col center p-1 bg-cream join-us-container">
+      <div class="investor-about-card-gif mt-2"></div>
+      <h3 class="mt-4 t-white ta-c fs-large f-thin">
+        Join us in shaping the <strong>future of work</strong> in maritime
+      </h3>
+      <div class="flex j-sb mt-2 mb-8 gap-2 sec-last-btns grid">
+        <a
+          class="t-white b-rounded mt-2 w-auto j-c flex center gap-h bg-purple-light scale-on-hover"
+          style="padding: 1rem 2rem"
+          href="https://forms.zohopublic.eu/frontmintegration/form/ContactUs/formperma/xaIkirttr0iB4YlXye_4qzX4_OQpoCLb3jqdMQ4wAYg"
+          title="Contact Us"
+          target="_blank"
+          onclick="zforms_open_window(this.href, 648, 700); return false"
+        >
+          <span class="fs-normal">Get in touch</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <polygon
+              points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
+            />
+          </svg>
+        </a>
+
+        <a
+          class="t-white b-rounded mt-2 w-auto j-c flex center gap-h bg-purple-light scale-on-hover"
+          style="padding: 1rem 2rem"
+          href="https://forms.zohopublic.eu/frontmintegration/form/BookaDemoPopup/formperma/X2cHKx12QHdH4yfabtPjAGCsaeIG60kauGiWzds5uoY"
+          title="Book a Demo with FrontM"
+          target="_blank"
+          onclick="zforms_open_window(this.href, 648, 700); return false"
+        >
+          <span class="fs-normal">Request a demo</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <polygon
+              points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
+            />
+          </svg>
+        </a>
+        <button
+          class="t-white b-rounded mt-2 j-c w-auto flex center gap-h bg-purple-light j-c fs-normal scale-on-hover"
+          style="padding: 1rem 2rem"
+          onclick="showDialog()"
+        >
+          <span class="fs-normal flex gap-q"
+            >Download <span class="f-medium">onship</span></span
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <polygon
+              points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <footer class="container min-h-30 bg-footer flex col center j-c">
+      <div class="flex j-sb">
+        <div class="flex col footer-align-item">
+          <a href="/" class="w-fc"
+            ><img
+              src="https://cdn.sanity.io/images/7b7oo1uk/production/a4dcd178f8c8ae9f39f69130cbd63163ddedafe8-900x400.png"
+              alt="frontM Limited"
+              width="auto"
+              height="60px"
+              srcset="
+                https://cdn.sanity.io/images/7b7oo1uk/production/a4dcd178f8c8ae9f39f69130cbd63163ddedafe8-900x400.png
+              "
+          /></a>
+          <!--Zoho Campaigns Web-Optin Form Starts Here-->
+          <script
+            type="text/javascript"
+            src="https://rwbqin-zcmp.maillist-manage.eu/js/optin.min.js"
+            onload="setupSF('sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9','ZCFORMVIEW',false,'light',false,'0')"
+          ></script>
+          <script type="text/javascript">
+            function runOnFormSubmit_sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9(
+              th
+            ) {
+              /*Before submit, if you want to trigger your event, "include your code here"*/
+            }
+          </script>
+
+          <div
+            id="sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9"
+            class="footer-form"
+            data-type="signupform"
+          >
+            <div id="customForm">
+              <div class="quick_form_8_css" name="SIGNUP_BODY">
+                <div>
+                  <div id="SIGNUP_HEADING"></div>
+                  <div style="position: relative">
+                    <div
+                      id="Zc_SignupSuccess"
+                      style="
+                        display: none;
+                        position: absolute;
+                        margin-left: 4%;
+                        width: 90%;
+                        background-color: white;
+                        padding: 3px;
+                        border: 3px solid rgb(194, 225, 154);
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        word-break: break-all;
+                      "
+                    >
+                      <table
+                        width="100%"
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                      >
+                        <tbody>
+                          <tr>
+                            <td width="10%">
+                              <img
+                                class="successicon"
+                                src="https://rwbqin-zcmp.maillist-manage.eu/images/challangeiconenable.jpg"
+                                align="absmiddle"
+                                alt=""
+                              />
+                            </td>
+                            <td>
+                              <span
+                                id="signupSuccessMsg"
+                                style="
+                                  color: rgb(73, 140, 132);
+                                  font-family: sans-serif;
+                                  font-size: 14px;
+                                  word-break: break-word;
+                                "
+                                >&nbsp;&nbsp;Thank you for Signing Up</span
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <form
+                    method="POST"
+                    id="zcampaignOptinForm"
+                    action="https://rwbqin-zcmp.maillist-manage.eu/weboptin.zc"
+                    target="_zcSignup"
+                  >
+                    <div
+                      class="flex j-c center gap-1 mt-2 mb-2 w-fc footer-form-row"
+                    >
+                      <div
+                        class="SIGNUP_FLD flex col j-fs"
+                        style="margin-right: 0; width: fit-content"
+                      >
+                        <input
+                          type="email"
+                          class="p-h t-white fs-normal"
+                          style="
+                            background-color: #212658;
+                            border-style: none;
+                            border-radius: 5px;
+                          "
+                          placeholder="Email"
+                          changeitem="SIGNUP_FORM_FIELD"
+                          name="CONTACT_EMAIL"
+                          id="EMBED_FORM_EMAIL_LABEL"
+                          required
+                        />
+                        <div class="fs-xs t-red mt-h hide" id="errorMsgDiv">
+                          Please enter correct email address
+                        </div>
+                      </div>
+                      <div
+                        class="SIGNUP_FLD"
+                        style="margin-left: 0; width: fit-content"
+                      >
+                        <input
+                          class="p-h bg-white fs-normal"
+                          style="border-style: none; border-radius: 5px"
+                          type="button"
+                          name="SIGNUP_SUBMIT_BUTTON"
+                          id="zcWebOptin"
+                          value="Join"
+                        />
+                      </div>
+                    </div>
+                    <input type="hidden" id="fieldBorder" value="" />
+                    <input
+                      type="hidden"
+                      id="submitType"
+                      name="submitType"
+                      value="optinCustomView"
+                    />
+                    <input
+                      type="hidden"
+                      id="emailReportId"
+                      name="emailReportId"
+                      value=""
+                    />
+                    <input
+                      type="hidden"
+                      id="formType"
+                      name="formType"
+                      value="QuickForm"
+                    />
+                    <input
+                      type="hidden"
+                      name="zx"
+                      id="cmpZuid"
+                      value="14ad52cf9c"
+                    />
+                    <input type="hidden" name="zcvers" value="2.0" />
+                    <input
+                      type="hidden"
+                      name="oldListIds"
+                      id="allCheckedListIds"
+                      value=""
+                    />
+                    <input
+                      type="hidden"
+                      id="mode"
+                      name="mode"
+                      value="OptinCreateView"
+                    />
+                    <input type="hidden" id="zcld" name="zcld" value="" />
+                    <input type="hidden" id="zctd" name="zctd" value="" />
+                    <input type="hidden" id="document_domain" value="" />
+                    <input
+                      type="hidden"
+                      id="zc_Url"
+                      value="rwbqin-zcmp.maillist-manage.eu"
+                    />
+                    <input type="hidden" id="new_optin_response_in" value="0" />
+                    <input
+                      type="hidden"
+                      id="duplicate_optin_response_in"
+                      value="0"
+                    />
+                    <input
+                      type="hidden"
+                      name="zc_trackCode"
+                      id="zc_trackCode"
+                      value="ZCFORMVIEW"
+                    />
+                    <input
+                      type="hidden"
+                      id="zc_formIx"
+                      name="zc_formIx"
+                      value="3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9"
+                    />
+                    <input type="hidden" id="viewFrom" value="URL_ACTION" />
+                    <span style="display: none" id="dt_CONTACT_EMAIL"
+                      >1,true,6,Contact Email,2</span
+                    >
+                  </form>
+                </div>
+              </div>
+            </div>
+            <img
+              src="https://rwbqin-zcmp.maillist-manage.eu/images/spacer.gif"
+              class="hide"
+              id="refImage"
+              onload="referenceSetter(this)"
+              alt=""
+            />
+          </div>
+          <input
+            type="hidden"
+            id="signupFormType"
+            value="QuickForm_Horizontal"
+          />
+          <div
+            id="zcOptinOverLay"
+            oncontextmenu="return false"
+            style="
+              display: none;
+              text-align: center;
+              background-color: rgb(0, 0, 0);
+              opacity: 0.5;
+              z-index: 100;
+              position: fixed;
+              width: 100%;
+              top: 0px;
+              left: 0px;
+              height: 988px;
+            "
+          ></div>
+          <div
+            id="zcOptinSuccessPopup"
+            style="
+              display: none;
+              z-index: 9999;
+              width: 800px;
+              height: 40%;
+              top: 84px;
+              position: fixed;
+              left: 26%;
+              background-color: #ffffff;
+              border-color: #e6e6e6;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: 0 1px 10px #424242;
+              padding: 35px;
+            "
+          >
+            <span
+              style="
+                position: absolute;
+                top: -16px;
+                right: -14px;
+                z-index: 99999;
+                cursor: pointer;
+              "
+              id="closeSuccess"
+            >
+              <img
+                src="https://rwbqin-zcmp.maillist-manage.eu/images/videoclose.png"
+                alt=""
+              />
+            </span>
+            <div id="zcOptinSuccessPanel"></div>
+          </div>
+
+          <!--Zoho Campaigns Web-Optin Form Ends Here-->
+          <div class="flex row gap-1 mb-2 w-fc">
+            <!-- <a href="https://twitter.com/FrontMPlatform" target="_blank"
+              ><img
+                class="logo"
+                style="height: 44px"
+                src="https://cdn.sanity.io/images/7b7oo1uk/production/54b4175ebc8c7a3c5521a4cf0c9a2921e587e835-36x36.svg"
+                alt="Follow us on X"
+                srcset="
+                  https://cdn.sanity.io/images/7b7oo1uk/production/54b4175ebc8c7a3c5521a4cf0c9a2921e587e835-36x36.svg
+                "
+            /></a> -->
+            <a
+              href="https://www.linkedin.com/company/frontm-limited"
+              target="_blank"
+              ><img
+                class="logo"
+                style="height: 44px"
+                src="https://cdn.sanity.io/images/7b7oo1uk/production/91903e5324f3983fb2ed3e63457ce568bd40f7f9-36x36.svg"
+                alt="Follow us on LinkedIn"
+                srcset="
+                  https://cdn.sanity.io/images/7b7oo1uk/production/91903e5324f3983fb2ed3e63457ce568bd40f7f9-36x36.svg
+                "
+            /></a>
+          </div>
+        </div>
+
+        <div class="flex row wrap w-100p footer-nav footer-column-1-gap jc-e">
+          <ul class="flex gap-1 footer-mob-col">
+            <li><h6 class="t-white fs-normal fw-700">Solutions</h6></li>
+            <li>
+              <a class="fs-normal" href="./pages/onship.html"
+                >Maritime Operators</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="./pages/coming-soon.html"
+                >Solution Providers</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="./pages/coming-soon.html"
+                >Service Providers</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="./pages/coming-soon.html"
+                >Maritime Professionals</a
+              >
+            </li>
+          </ul>
+          <ul class="flex gap-1 footer-mob-col">
+            <li><h6 class="t-white fs-normal fw-700">Company</h6></li>
+            <li>
+              <a class="fs-normal" href="https://platform.frontm.com/about"
+                >About Us</a
+              >
+            </li>
+            <li><a class="fs-normal" href="./pages/news.html">Press</a></li>
+            <li>
+              <a
+                class="fs-normal"
+                href="https://platform.frontm.com/investor-relations"
+                >Investor relations</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="https://platform.frontm.com/careers"
+                >Careers</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="https://platform.frontm.com/contact"
+                >Contact us</a
+              >
+            </li>
+          </ul>
+          <ul class="flex gap-1 footer-mob-col">
+            <li><h6 class="t-white fs-normal fw-700">Resources</h6></li>
+            <li>
+              <a class="fs-normal" href="./pages/resourcesHub.html"
+                >Resources Hub</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="https://help.frontm.com/hc/en-us"
+                >Help</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="./pages/terms-condition.html">Legal</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="fs-normal mt-2" style="color: #638dff">© All rights reserved</p>
+    </footer>
+    <dialog
+      id="downloadAppDialog"
+      class="fixed relative z-10 pt-2 pb-2 ta-c b-white border-radius-15px flex col center j-c gap-1 hide"
+    >
+      <button
+        class="h1 f-thin absolute r-0 t-0 mr-1 pt-1"
+        style="outline: none; font-size: 34px"
+        onclick="closeDialog()"
+      >
+        ✕
+      </button>
+      <img
+        src="https://cdn.sanity.io/files/7b7oo1uk/production/67ca502a3f4fc31e2a34cc891b0f0cded942c33a.png"
+        alt="FrontM QR Code"
+        srcset="
+          https://cdn.sanity.io/files/7b7oo1uk/production/67ca502a3f4fc31e2a34cc891b0f0cded942c33a.png
+        "
+      />
+      <h4 class="f-medium fs-n-3">
+        Download <span class="f-bold">onship</span> now!
+      </h4>
+      <p class="ta-c">
+        <strong>onship</strong>, The Maritime Superapp, is a secure crew welfare
+        and collaboration app. It helps shipping companies connect teams from
+        shore to ship and allows seafarers to stay connected with friends and
+        family.
+      </p>
+      <div class="flex gap-4 center j-c">
+        <a
+          href="https://play.google.com/store/apps/details?id=com.frontm.onship&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+          target="_blank"
+          class="flex j-c center"
+        >
+          <img
+            class="of-fill"
+            style="height: 60px"
+            alt="Get it on Google Play"
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/cb8126b32c2274e0394246b40bd0b7f9f847e44c-646x250.png"
+          />
+        </a>
+        <a
+          href="https://apps.apple.com/in/app/onship/id1491731188"
+          target="_blank"
+          class="flex j-c center"
+        >
+          <img
+            class="of-cover h-40px"
+            alt="Download on App Store"
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/8f3e4f92038c36b9fbed661486b9277ba4a1c5c7-284x95.svg"
+          />
+        </a>
+      </div>
+    </dialog>
+    <script
+      src="https://tag.clearbitscripts.com/v1/pk_e371ccc2a8476117c19f70e730a0e8ab/tags.js"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+      integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/CSSRulePlugin.min.js"
+      integrity="sha512-aUM9IHJr7TYwzhhbK0G9UQX6WNq6/1HC+lsh+EuqJyaOB44csmHMRVHcIVMWfrruvpVTtEqshD28L+0XxMH//g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/TextPlugin.min.js"
+      integrity="sha512-cSd5PfUPR/QeAnMQGoVA2s1d0eoNnLaK79bnvgo+5EAVPSWIjzmSmy4SOsHOjILFvzRU7DairXjs3eUG+dr43A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+      integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+    ></script>
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"
+      integrity="sha512-jEnuDt6jfecCjthQAJ+ed0MTVA++5ZKmlUcmDGBv2vUI/REn6FuIdixLNnQT+vKusE2hhTk2is3cFvv5wA+Sgg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs-axios@latest/dist/api.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="./js/home.js"></script>
+    <script>
+      $(document).ready(() => {
+        fetch(
+          "https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type%3D%3D%27logo_marquee%27+%26%26+name+%3D%3D+%27NewHome%27%5D%7B%27logosUrl%27%3A+logos%5B%5D.asset-%3Eurl%7D"
+        )
+          .then((response) => {
+            response.json().then((val) => {
+              var $imageContainer = $(".marquee-scroll");
+              $.each(val.result[0].logosUrl, function (index, src) {
+                const getMeta = async (url) => {
+                  const img = new Image();
+                  img.src = url;
+                  await img.decode();
+                  return img;
+                };
+
+                let $img = $(
+                  '<img class="of-contain w-max" draggable="false" />'
+                ).attr("src", src);
+
+                getMeta(src).then((img) => {
+                  // console.dir(`Height: ${img.naturalHeight} width: ${img.naturalWidth}`);
+                });
+                $imageContainer.append($img);
+              });
+
+              $(".marquee-scroll").slick({
+                centerMode: true,
+                slidesToScroll: 1,
+                pauseOnFocus: false,
+                pauseOnHover: false,
+                touchMove: false,
+                autoplay: true,
+                variableWidth: false,
+                lazyLoad: true,
+                mobileFirst: true,
+                zIndex: 0,
+                autoplaySpeed: 2000,
+                infinite: true,
+                accessibility: true,
+                draggable: false,
+                centerPadding: 50,
+                responsive: [
+                  {
+                    breakpoint: 280,
+                    settings: {
+                      slidesToShow: 1,
+                    },
+                  },
+                  {
+                    breakpoint: 425,
+                    settings: {
+                      slidesToShow: 3,
+                    },
+                  },
+                  {
+                    breakpoint: 768,
+                    settings: {
+                      slidesToShow: 5,
+                    },
+                  },
+                  {
+                    breakpoint: 1440,
+                    settings: {
+                      slidesToShow: 5,
+                    },
+                  },
+                ],
+              });
+            });
+          })
+          .catch((reason) => {
+            console.error(reason);
+          });
+      });
+    </script>
+  </body>
+</html>

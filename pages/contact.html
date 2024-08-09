@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contact us</title>
+    <link
+      rel="shortcut icon"
+      href="https://cdn.sanity.io/images/7b7oo1uk/production/49efdfb595cd02ab3b7d8e0dea877c18c175e90f-280x280.svg"
+      type="image/svg+xml"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
+    <script src="../js/utils.js" async defer></script>
+
+    <style>
+      .form::-webkit-scrollbar {
+        display: none;
+        scrollbar-width: none; /* Firefox */
+      }
+      .form {
+        font-family: "Figtree", sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 550px !important;
+        width: 98% !important;
+        padding: 3rem 2rem;
+        background-color: #fff;
+        border-radius: 1.1rem;
+      }
+      .form-red {
+        color: red;
+      }
+      .form input,
+      textarea {
+        padding: 6px;
+        outline: none;
+        border: 1px solid #4444;
+        color: #181818d2;
+        font-size: 13px;
+        border-radius: 5px;
+      }
+      .form label {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .form .form-fields-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+      }
+      .form .name-fileds-wrapper {
+        display: flex;
+
+        gap: 1rem;
+      }
+      .form .input-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: calc(50% - 0.25rem);
+      }
+      .form .input-field input {
+        max-width: 100%;
+      }
+      .form .name-label {
+        color: #2c2c2cd2;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+      }
+      .form .form-btn {
+        font-family: "Figtree";
+        font-size: 1rem;
+        color: #ffffff;
+        font-style: normal;
+        font-weight: 700;
+        background: #864afc;
+        max-width: 150px;
+        border-radius: 2rem;
+        border: none;
+        padding: 12px 50px;
+        align-self: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section-top">
+      <nav class="navbar">
+        <a href="../index.html">
+          <img
+            class="navbar-logo"
+            loading="lazy"
+            src="../assets/images/logo.svg"
+            alt="Logo"
+          />
+        </a>
+        <div class="nav-list-container" id="nav-list-container">
+          <ul class="nav-list mobile-nav-list" id="nav-list">
+            <li class="nav-item">
+              <a class="nav-link"
+                >Solutions
+                <span class="nav-link-btn"
+                  ><img
+                    src="../assets/images/navbar/down-arrow-img.svg"
+                    alt="down arrow" /></span
+              ></a>
+              <ul class="nav-item-list">
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a class="nav-item-list-link" href="./onship.html"
+                    >Maritime Operators</a
+                  >
+                </li>
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a class="nav-item-list-link" href="./coming-soon.html"
+                    >Solution Providers</a
+                  >
+                </li>
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a class="nav-item-list-link" href="./coming-soon.html"
+                    >Service Providers</a
+                  >
+                </li>
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a class="nav-item-list-link" href="./coming-soon.html"
+                    >Maritime Professionals</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link"
+                >Company
+                <span class="nav-link-btn"
+                  ><img
+                    src="../assets/images/navbar/down-arrow-img.svg"
+                    alt="down arrow" /></span
+              ></a>
+              <ul class="nav-item-list">
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a
+                    href="https://platform.frontm.com/about"
+                    class="nav-item-list-link"
+                    >About us</a
+                  >
+                </li>
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a href="./news.html" class="nav-item-list-link">Press</a>
+                </li>
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a
+                    href="https://platform.frontm.com/investor-relations"
+                    class="nav-item-list-link"
+                    >Investor relations</a
+                  >
+                </li>
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a
+                    href="https://platform.frontm.com/contact"
+                    class="nav-item-list-link"
+                    >Contact us</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                >Resources
+                <span class="nav-link-btn"
+                  ><img
+                    src="../assets/images/navbar/down-arrow-img.svg"
+                    alt="down arrow" /></span
+              ></a>
+              <ul class="nav-item-list">
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a href="./resourcesHub.html" class="nav-item-list-link"
+                    >Resources Hub</a
+                  >
+                </li>
+
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a
+                    href="https://help.frontm.com/hc/en-us"
+                    class="nav-item-list-link"
+                    >Help</a
+                  >
+                </li>
+                <li class="nav-item-list-item" id="nav-list-closer">
+                  <a href="./terms-condition.html" class="nav-item-list-link"
+                    >Legal</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <img
+          src="../assets/images/navbar/mobile-menu-img.svg"
+          alt=""
+          class="navbar-mobile-menu"
+          id="navbar-mobile-menu"
+        />
+      </nav>
+      <header class="contact-header">
+        <div class="contact-header-container">
+          <h1 class="contact-header-title">Get in touch</h1>
+          <p class="contact-header-content text-orange">
+            Have questions or ideas?
+          </p>
+          <p class="contact-header-content text-white">
+            We’d love to hear from you.
+          </p>
+        </div>
+
+        <form
+          action="https://forms.zohopublic.eu/frontmintegration/form/ContactUs/formperma/pWdi9I592uXL2mZJ_jzZvvqmVDGkrJNnL_QeCg7NB6U/htmlRecords/submit"
+          name="form"
+          id="form"
+          method="POST"
+          accept-charset="UTF-8"
+          enctype="multipart/form-data"
+          class="form"
+        >
+          <input
+            type="hidden"
+            name="zf_referrer_name"
+            value=""
+          /><!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
+          <input
+            type="hidden"
+            name="zf_redirect_url"
+            value=""
+          /><!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
+          <input
+            type="hidden"
+            name="zc_gad"
+            value=""
+          /><!-- If GCLID is enabled in Zoho CRM Integration, click details of AdWords Ads will be pushed to Zoho CRM -->
+          <!--Name-->
+
+          <div class="form-fields-wrapper">
+            <label> Name <span class="form-red">*</span> </label>
+            <div class="name-fileds-wrapper">
+              <div class="input-field">
+                <input
+                  type="text"
+                  maxlength="255"
+                  name="Name_First"
+                  fieldType="7"
+                  placeholder=""
+                  required
+                />
+                <label class="name-label">First Name</label>
+              </div>
+              <div class="input-field">
+                <input
+                  type="text"
+                  maxlength="255"
+                  name="Name_Last"
+                  fieldType="7"
+                  placeholder=""
+                  required
+                />
+                <label class="name-label">Last Name</label>
+              </div>
+            </div>
+          </div>
+          <!--Single Line-->
+
+          <div class="form-fields-wrapper">
+            <label> Company Name <span class="form-red">*</span> </label>
+            <input
+              type="text"
+              name="SingleLine2"
+              value=""
+              fieldType="1"
+              maxlength="255"
+              placeholder=""
+              required
+              required
+            />
+          </div>
+          <!--Email-->
+
+          <div class="form-fields-wrapper">
+            <label> Email <span class="form-red">*</span> </label>
+            <input
+              type="email"
+              maxlength="255"
+              name="Email"
+              value=""
+              fieldType="9"
+              placeholder=""
+              required
+            />
+          </div>
+          <!--Multi Line-->
+          <label> Your Message <span class="form-red">*</span> </label>
+          <textarea
+            name="MultiLine"
+            maxlength="65535"
+            placeholder=""
+            required
+            rows="5"
+          ></textarea>
+          <button type="submit" class="form-btn">Submit</button>
+        </form>
+        <!-- </form> -->
+      </header>
+    </section>
+    <!-- conatct header -->
+
+    <!-- contact main -->
+    <main class="contact-main">
+      <section class="contact-support">
+        <div class="contact-support-container">
+          <div class="contact-support-card">
+            <h2 class="contact-card-title">Talk to a Product Expert</h2>
+            <div class="contact-card-info">
+              <p class="contact-card-info-content">
+                Interested in FrontM tools?
+              </p>
+              <p class="contact-card-info-content">Send us an email on</p>
+              <div class="contact-card-info-link-container">
+                <div class="contact-card-info-link-icons-container">
+                  <div
+                    class="link-circle-icon shake"
+                    id="link-circle-icon"
+                  ></div>
+                  <img
+                    src="../assets/images/arrow-right.svg"
+                    loading="lazy"
+                    class="link-arrow-icon strech"
+                    id="link-arrow-icon"
+                    alt=""
+                  />
+                </div>
+                <a href="#" class="contact-card-info-link-content"
+                  >product@frontm.com</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="contact-support-card">
+            <h2 class="contact-card-title">Contact Support</h2>
+            <div class="contact-card-info">
+              <p class="contact-card-info-content">
+                Already using FrontM’s tools but got stuck somewhere? We’re here
+                for you.
+              </p>
+
+              <div class="contact-card-info-link-container">
+                <div class="contact-card-info-link-icons-container">
+                  <div
+                    class="link-circle-icon shake"
+                    id="link-circle-icon"
+                  ></div>
+                  <img
+                    src="../assets/images/arrow-right.svg"
+                    class="link-arrow-icon strech"
+                    id="link-arrow-icon"
+                    alt=""
+                  />
+                </div>
+                <a href="#" class="contact-card-info-link-content"
+                  >support@frontm.com</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="contact-map">
+        <div class="contact-map-container">
+          <img
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/7a8b621d4cc107bafb8b905992f1503f9a995dcf-1180x649.svg"
+            loading="lazy"
+            alt="map"
+            class="contact-map-img"
+          />
+
+          <div class="contact-map-content-container">
+            <h2 class="contact-map-content-title">Headquarters</h2>
+            <div class="contact-map-content-div">
+              <p class="contact-map-content">
+                International House, 36-38 Cornhill,
+              </p>
+              <p class="contact-map-content">
+                London, EC3V 3NG, United Kingdom
+              </p>
+              <div class="contact-map-content-link">
+                <span class="contact-map-link-span">Email:</span>
+                <a href="#" class="contact-map-link-content">info@frontm.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- footer section -->
+    <footer class="container min-h-30 bg-footer flex col center j-c">
+      <div class="flex j-sb">
+        <div class="flex col footer-align-item">
+          <a href="/" class="w-fc"
+            ><img
+              src="https://cdn.sanity.io/images/7b7oo1uk/production/a4dcd178f8c8ae9f39f69130cbd63163ddedafe8-900x400.png"
+              alt="frontM Limited"
+              width="auto"
+              height="60px"
+              srcset="
+                https://cdn.sanity.io/images/7b7oo1uk/production/a4dcd178f8c8ae9f39f69130cbd63163ddedafe8-900x400.png
+              "
+          /></a>
+          <!--Zoho Campaigns Web-Optin Form Starts Here-->
+          <script
+            type="text/javascript"
+            src="https://rwbqin-zcmp.maillist-manage.eu/js/optin.min.js"
+            onload="setupSF('sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9','ZCFORMVIEW',false,'light',false,'0')"
+          ></script>
+          <script type="text/javascript">
+            function runOnFormSubmit_sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9(
+              th
+            ) {
+              /*Before submit, if you want to trigger your event, "include your code here"*/
+            }
+          </script>
+
+          <div
+            id="sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9"
+            class="footer-form"
+            data-type="signupform"
+          >
+            <div id="customForm">
+              <div class="quick_form_8_css" name="SIGNUP_BODY">
+                <div>
+                  <div id="SIGNUP_HEADING"></div>
+                  <div style="position: relative">
+                    <div
+                      id="Zc_SignupSuccess"
+                      style="
+                        display: none;
+                        position: absolute;
+                        margin-left: 4%;
+                        width: 90%;
+                        background-color: white;
+                        padding: 3px;
+                        border: 3px solid rgb(194, 225, 154);
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        word-break: break-all;
+                      "
+                    >
+                      <table
+                        width="100%"
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                      >
+                        <tbody>
+                          <tr>
+                            <td width="10%">
+                              <img
+                                class="successicon"
+                                src="https://rwbqin-zcmp.maillist-manage.eu/images/challangeiconenable.jpg"
+                                align="absmiddle"
+                                alt=""
+                              />
+                            </td>
+                            <td>
+                              <span
+                                id="signupSuccessMsg"
+                                style="
+                                  color: rgb(73, 140, 132);
+                                  font-family: sans-serif;
+                                  font-size: 14px;
+                                  word-break: break-word;
+                                "
+                                >&nbsp;&nbsp;Thank you for Signing Up</span
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <form
+                    method="POST"
+                    id="zcampaignOptinForm"
+                    action="https://rwbqin-zcmp.maillist-manage.eu/weboptin.zc"
+                    target="_zcSignup"
+                  >
+                    <div
+                      class="flex j-c center gap-1 mt-2 mb-2 w-fc footer-form-row"
+                    >
+                      <div
+                        class="SIGNUP_FLD flex col j-fs"
+                        style="margin-right: 0; width: fit-content"
+                      >
+                        <input
+                          type="email"
+                          class="p-h t-white"
+                          style="
+                            background-color: #212658;
+                            border-style: none;
+                            border-radius: 5px;
+                          "
+                          placeholder="Email"
+                          changeitem="SIGNUP_FORM_FIELD"
+                          name="CONTACT_EMAIL"
+                          id="EMBED_FORM_EMAIL_LABEL"
+                          required
+                        />
+                        <div class="fs-xs t-red mt-h hide" id="errorMsgDiv">
+                          Please enter correct email address
+                        </div>
+                      </div>
+                      <div
+                        class="SIGNUP_FLD"
+                        style="margin-left: 0; width: fit-content"
+                      >
+                        <input
+                          class="p-h bg-white"
+                          style="border-style: none; border-radius: 5px"
+                          type="button"
+                          name="SIGNUP_SUBMIT_BUTTON"
+                          id="zcWebOptin"
+                          value="Join"
+                        />
+                      </div>
+                    </div>
+                    <input type="hidden" id="fieldBorder" value="" />
+                    <input
+                      type="hidden"
+                      id="submitType"
+                      name="submitType"
+                      value="optinCustomView"
+                    />
+                    <input
+                      type="hidden"
+                      id="emailReportId"
+                      name="emailReportId"
+                      value=""
+                    />
+                    <input
+                      type="hidden"
+                      id="formType"
+                      name="formType"
+                      value="QuickForm"
+                    />
+                    <input
+                      type="hidden"
+                      name="zx"
+                      id="cmpZuid"
+                      value="14ad52cf9c"
+                    />
+                    <input type="hidden" name="zcvers" value="2.0" />
+                    <input
+                      type="hidden"
+                      name="oldListIds"
+                      id="allCheckedListIds"
+                      value=""
+                    />
+                    <input
+                      type="hidden"
+                      id="mode"
+                      name="mode"
+                      value="OptinCreateView"
+                    />
+                    <input type="hidden" id="zcld" name="zcld" value="" />
+                    <input type="hidden" id="zctd" name="zctd" value="" />
+                    <input type="hidden" id="document_domain" value="" />
+                    <input
+                      type="hidden"
+                      id="zc_Url"
+                      value="rwbqin-zcmp.maillist-manage.eu"
+                    />
+                    <input type="hidden" id="new_optin_response_in" value="0" />
+                    <input
+                      type="hidden"
+                      id="duplicate_optin_response_in"
+                      value="0"
+                    />
+                    <input
+                      type="hidden"
+                      name="zc_trackCode"
+                      id="zc_trackCode"
+                      value="ZCFORMVIEW"
+                    />
+                    <input
+                      type="hidden"
+                      id="zc_formIx"
+                      name="zc_formIx"
+                      value="3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9"
+                    />
+                    <input type="hidden" id="viewFrom" value="URL_ACTION" />
+                    <span style="display: none" id="dt_CONTACT_EMAIL"
+                      >1,true,6,Contact Email,2</span
+                    >
+                  </form>
+                </div>
+              </div>
+            </div>
+            <img
+              src="https://rwbqin-zcmp.maillist-manage.eu/images/spacer.gif"
+              class="hide"
+              id="refImage"
+              onload="referenceSetter(this)"
+              alt=""
+            />
+          </div>
+          <input
+            type="hidden"
+            id="signupFormType"
+            value="QuickForm_Horizontal"
+          />
+          <div
+            id="zcOptinOverLay"
+            oncontextmenu="return false"
+            style="
+              display: none;
+              text-align: center;
+              background-color: rgb(0, 0, 0);
+              opacity: 0.5;
+              z-index: 100;
+              position: fixed;
+              width: 100%;
+              top: 0px;
+              left: 0px;
+              height: 988px;
+            "
+          ></div>
+          <div
+            id="zcOptinSuccessPopup"
+            style="
+              display: none;
+              z-index: 9999;
+              width: 800px;
+              height: 40%;
+              top: 84px;
+              position: fixed;
+              left: 26%;
+              background-color: #ffffff;
+              border-color: #e6e6e6;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: 0 1px 10px #424242;
+              padding: 35px;
+            "
+          >
+            <span
+              style="
+                position: absolute;
+                top: -16px;
+                right: -14px;
+                z-index: 99999;
+                cursor: pointer;
+              "
+              id="closeSuccess"
+            >
+              <img
+                src="https://rwbqin-zcmp.maillist-manage.eu/images/videoclose.png"
+                alt=""
+              />
+            </span>
+            <div id="zcOptinSuccessPanel"></div>
+          </div>
+
+          <!--Zoho Campaigns Web-Optin Form Ends Here-->
+          <div class="flex row gap-1 mb-2 w-fc">
+            <!-- <a href="https://twitter.com/FrontMPlatform" target="_blank"
+              ><img
+                class="logo"
+                style="height: 44px"
+                src="https://cdn.sanity.io/images/7b7oo1uk/production/54b4175ebc8c7a3c5521a4cf0c9a2921e587e835-36x36.svg"
+                alt="Follow us on X"
+                srcset="
+                  https://cdn.sanity.io/images/7b7oo1uk/production/54b4175ebc8c7a3c5521a4cf0c9a2921e587e835-36x36.svg
+                "
+            /></a> -->
+            <a
+              href="https://www.linkedin.com/company/frontm-limited"
+              target="_blank"
+              ><img
+                class="logo"
+                style="height: 44px"
+                src="https://cdn.sanity.io/images/7b7oo1uk/production/91903e5324f3983fb2ed3e63457ce568bd40f7f9-36x36.svg"
+                alt="Follow us on LinkedIn"
+                srcset="
+                  https://cdn.sanity.io/images/7b7oo1uk/production/91903e5324f3983fb2ed3e63457ce568bd40f7f9-36x36.svg
+                "
+            /></a>
+          </div>
+        </div>
+
+        <div class="flex row wrap w-100p footer-nav footer-column-1-gap jc-e">
+          <ul class="flex gap-1 footer-mob-col">
+            <li><h6 class="t-white fs-n-2">Solutions</h6></li>
+            <li>
+              <a class="fs-normal" href="./onship.html">Maritime Operators</a>
+            </li>
+            <li>
+              <a class="fs-normal" href="./coming-soon.html"
+                >Solution Providers</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="./coming-soon.html"
+                >Service Providers</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="./coming-soon.html"
+                >Maritime Professionals</a
+              >
+            </li>
+          </ul>
+
+          <ul class="flex gap-1 footer-mob-col">
+            <li><h6 class="t-white fs-n-2">Company</h6></li>
+            <li>
+              <a class="fs-normal" href="https://platform.frontm.com/about"
+                >About Us</a
+              >
+            </li>
+            <li><a class="fs-normal" href="./news.html">Press</a></li>
+            <li>
+              <a
+                class="fs-normal"
+                href="https://platform.frontm.com/investor-relations"
+                >Investor relations</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="https://platform.frontm.com/contact"
+                >Contact us</a
+              >
+            </li>
+          </ul>
+          <ul class="flex gap-1 footer-mob-col">
+            <li><h6 class="t-white fs-n-2">Resources</h6></li>
+            <li>
+              <a class="fs-normal" href="./resourcesHub.html">Resources Hub</a>
+            </li>
+            <li>
+              <a class="fs-normal" href="https://help.frontm.com/hc/en-us"
+                >Help</a
+              >
+            </li>
+            <li>
+              <a class="fs-normal" href="./terms-condition.html">Legal</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="fs-normal mt-2" style="color: #638dff">© All rights reserved</p>
+    </footer>
+
+    <script
+      src="https://tag.clearbitscripts.com/v1/pk_e371ccc2a8476117c19f70e730a0e8ab/tags.js"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></script>
+    <script src="../js/navbar.js"></script>
+  </body>
+</html>

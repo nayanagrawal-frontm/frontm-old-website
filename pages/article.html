@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{pageTitle: '', previewImage: '', url: ''}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title x-text="pageTitle"></title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/whitepaperStyle2.css" />
+    <link
+      rel="shortcut icon"
+      href="https://cdn.sanity.io/images/7b7oo1uk/production/49efdfb595cd02ab3b7d8e0dea877c18c175e90f-280x280.svg"
+      type="image/svg+xml"
+    />
+    <!-- Custom Meta Tags for SEO-->
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" :content="url" />
+    <meta name="title" property="og:title" :content="pageTitle" />
+    <meta name="image" property="og:image" :content="previewImage" />
+    <meta property="og:site_name" content="FrontM" />
+    <meta property="twitter:title" content="FrontM Integrates Neuron’s Application-Driven QoE On Demand to enhance Vikand Connect and Crew Connectivity Solutions" />
+    <meta property="twitter:image" content="https://cdn.sanity.io/images/7b7oo1uk/production/2bbe131e7329b91abcaea1ff0340cfc78af62d93-1500x1000.jpg" />
+  </head>
+  <body
+    class="article"
+    x-data="{ slug: new URLSearchParams(location.search).get('slug'), isColumn: (window.innerWidth > window.innerHeight ? 'landscape-primary' : 'portrait-primary') === 'portrait-primary',
+      article: null,article_fn:function(){
+        $get('https://7b7oo1uk.api.sanity.io/v2022-03-07/data/query/production',{
+            params:{query:`*[_type == 'post' && '${this.slug}' match slug.current]{title,subtitle,shortdescription,'previewImage':previewImage.asset->url, author -> {name,designation,'imageUrl': image.asset->url,bio},'body': body[]{...,_type == 'image' => {'imageUrl': @.asset->url}, _type == 'text_with_image' => {...,'imageUrl': image.asset->url} },'categories':categories[]->title,_createdAt, relatedposts[] -> {title, 'imageUrl': mainImage.asset->url,'article_url': 'article.html?slug='+slug.current} }`,perspective:`published`}
+        }).then((response)=>{
+            this.article = response.data.result[0];
+            this.pageTitle = this.article.title;
+            this.previewImage = this.article.previewImage;
+            this.url = window.location.href;
+        })
+    } }"
+    x-init="() => {
+      article_fn();
+      window.addEventListener('resize', function() {
+          var orientation = window.innerWidth > window.innerHeight ? 'landscape-primary' : 'portrait-primary';
+          isColumn = orientation === 'portrait-primary';
+      });
+    }"
+  >
+    <template x-if="article">
+      <div
+        x-data="{
+            blogBg: 'https://cdn.sanity.io/images/7b7oo1uk/production/bb982321f42ea9d42ba329c998e084f112f9ebe0-1440x724.png',
+            newsBg: 'https://cdn.sanity.io/images/7b7oo1uk/production/39de8629b9a3d98a1b3de72fbbb52b034fab1f80-1440x724.png',
+            whitepaperBg: 'https://cdn.sanity.io/images/7b7oo1uk/production/bc1f7887265212456d4b12506e332ee81648665d-1440x724.png',
+        }"
+      >
+        <div
+          class="section bg-white min-h-25 flex col j-fs gap-1 center relative"
+          x-data="{ isFullScreenMenuOpen: false }"
+          x-bind:style="{ 'background': `url(${article && (article.categories.includes('Whitepapers') ? whitepaperBg : article.categories.includes('News') ? newsBg : blogBg)}) no-repeat bottom`, 'background-size': 'cover' }"
+        >
+          <div
+            x-show="isFullScreenMenuOpen"
+            class="bg-white fixed t-0 l-0 r-0 b-0 w-100 h-100 z-9999 flex col center j-c gap-1"
+            style="display: none"
+            @click.outside="isFullScreenMenuOpen = false"
+          >
+            <div class="w-90p flex col end">
+              <h6 class="mt-0 mb-q">Solutions</h6>
+              <ul class="flex col gap-h pl-0">
+                <li class="flex j-fe">
+                  <a class="t-faded-blue" href="./onship.html"
+                    >Maritime Operators</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a class="t-faded-blue" href="./coming-soon.html"
+                    >Solution Providers</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a class="t-faded-blue" href="./coming-soon.html"
+                    >Service Providers</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a class="t-faded-blue" href="./coming-soon.html"
+                    >Maritime Professionals</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="w-90p flex col end hide">
+              <h6 class="mt-0 mb-q">Industry</h6>
+              <ul class="flex col pl-0">
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="https://help.frontm.com/hc/en-us/categories/4417753792401-Developers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Maritime</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="w-90p flex col end">
+              <h6 class="mt-0 mb-q">Company</h6>
+              <ul class="flex col gap-h pl-0">
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="https://help.frontm.com/hc/en-us/categories/4417753792401-Developers"
+                    rel="noopener noreferrer"
+                    >About Us</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="./news.html"
+                    rel="noopener noreferrer"
+                    >Press</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="https://platform.frontm.com/investor-relations"
+                    rel="noopener noreferrer"
+                    >Investor Relations</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="https://platform.frontm.com/careers"
+                    rel="noopener noreferrer"
+                    >Careers</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="https://platform.frontm.com/contact"
+                    rel="noopener noreferrer"
+                    >Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="w-90p flex col end">
+              <h6 class="mt-0 mb-q">Resources</h6>
+              <ul class="flex col gap-h pl-0">
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="./resourcesHub.html"
+                    rel="noopener noreferrer"
+                    >Resources Hub</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="https://help.frontm.com/hc/en-us"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Help</a
+                  >
+                </li>
+                <li class="flex j-fe">
+                  <a
+                    class="t-faded-blue"
+                    href="./terms-condition.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Legal</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="flex j-fe w-90p">
+              <button
+                @click="isFullScreenMenuOpen = !isFullScreenMenuOpen"
+                class="t-blue pb-h pt-h ta-c pr-0"
+              >
+                Close
+              </button>
+              <!-- <a href="#" class="t-blue pb-h pt-h w-45p b-rounded b-blue ta-c  hide">Sign-In</a> -->
+            </div>
+          </div>
+          <header class="content-area-w z-1">
+            <a href="../">
+              <img
+                class="logo"
+                src="https://cdn.sanity.io/images/7b7oo1uk/production/654c47c76962cde4e86033bb436a011356c5559d-716x253.svg"
+                alt="frontM Limited"
+                class="of-contain"
+              />
+            </a>
+            <nav>
+              <ul class="t-white flex gap-2 wide-menu">
+                <li class="relative" x-data="{ isOpen: false }">
+                  <button
+                    @click="isOpen = !isOpen"
+                    class="t-white fs-normal flex gap-q bg-transparent header-menu-item"
+                  >
+                    Solutions<img
+                      src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                      alt="Down Arrow"
+                    />
+                  </button>
+                  <div
+                    x-show="isOpen"
+                    class="bg-white absolute top-40px card-rounded-sm p-1 r-0 dd-bs"
+                    style="display: none"
+                    @click.outside="isOpen = false"
+                  >
+                    <ul class="pl-0 flex col gap-1">
+                      <li>
+                        <a
+                          class="fs-formal t-faded-blue header-menu-item"
+                          href="./onship.html"
+                          >Maritime Operators</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-formal t-faded-blue header-menu-item"
+                          href="./coming-soon.html"
+                          >Solution Providers</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-formal t-faded-blue header-menu-item"
+                          href="./coming-soon.html"
+                          >Service Providers</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-formal t-faded-blue header-menu-item"
+                          href="./coming-soon.html"
+                          >Maritime Professionals</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="relative hide" x-data="{ isOpen: false }">
+                  <button
+                    @click="isOpen = !isOpen"
+                    class="t-white fs-normal flex gap-q bg-transparent header-menu-item"
+                    onclick=""
+                  >
+                    Industry<img
+                      src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                      alt="Down Arrow"
+                    />
+                  </button>
+                  <div
+                    x-show="isOpen"
+                    class="bg-white absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs"
+                    style="display: none"
+                    @click.outside="isOpen = false"
+                  >
+                    <ul class="pl-0 flex col gap-1">
+                      <li>
+                        <a
+                          class="fs-normal t-faded-blue"
+                          href="https://help.frontm.com/hc/en-us/categories/4417753792401-Developers"
+                          rel="noopener noreferrer"
+                          >Maritime</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li style="position: relative" x-data="{ isOpen: false }">
+                  <button
+                    @click="isOpen = !isOpen"
+                    class="t-white fs-normal flex gap-q bg-transparent header-menu-item"
+                    onclick=""
+                  >
+                    Company<img
+                      src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                      alt="Down Arrow"
+                    />
+                  </button>
+                  <div
+                    x-show="isOpen"
+                    class="bg-white absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs"
+                    style="
+                      display: none;
+                      box-shadow: -9px 7px 13px rgb(45 45 45 / 15%);
+                    "
+                    @click.outside="isOpen = false"
+                  >
+                    <ul class="pl-0 flex col gap-1">
+                      <li>
+                        <a
+                          class="fs-normal t-faded-blue header-menu-item"
+                          href="https://platform.frontm.com/about"
+                          rel="noopener noreferrer"
+                          >About Us</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-normal t-faded-blue header-menu-item"
+                          href="./news.html"
+                          rel="noopener noreferrer"
+                          >Press</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-normal t-faded-blue header-menu-item"
+                          href="https://platform.frontm.com/investor-relations"
+                          rel="noopener noreferrer"
+                          >Investor Relations</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-normal t-faded-blue header-menu-item"
+                          href="https://platform.frontm.com/careers"
+                          rel="noopener noreferrer"
+                          >Careers</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-normal t-faded-blue header-menu-item"
+                          href="https://platform.frontm.com/contact"
+                          rel="noopener noreferrer"
+                          >Contact Us</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li style="position: relative" x-data="{ isOpen: false }">
+                  <button
+                    @click="isOpen = !isOpen"
+                    class="t-white fs-normal flex gap-q bg-transparent header-menu-item"
+                    onclick=""
+                  >
+                    Resources<img
+                      src="https://cdn.sanity.io/images/7b7oo1uk/production/df22e36947e143c554073dfb3faf7336bfd0595f-24x24.svg"
+                      alt="Down Arrow"
+                    />
+                  </button>
+                  <div
+                    x-show="isOpen"
+                    class="bg-white absolute top-40px card-rounded-sm p-1 r-0 w-14 dd-bs"
+                    style="display: none"
+                    @click.outside="isOpen = false"
+                  >
+                    <ul class="pl-0 flex col gap-1">
+                      <li>
+                        <a
+                          class="fs-normal header-menu-item t-faded-blue"
+                          href="./resourcesHub.html"
+                          rel="noopener noreferrer"
+                          >Resources Hub</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-normal t-faded-blue header-menu-item"
+                          href="https://help.frontm.com/hc/en-us"
+                          rel="noopener noreferrer"
+                          >Help</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="fs-normal t-faded-blue header-menu-item"
+                          href="./terms-condition.html"
+                          rel="noopener noreferrer"
+                          >Legal</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="relative hide">
+                  <a
+                    class="gap-h b-blue t-blue b-rounded fs-normal"
+                    href="#"
+                    style="padding: 0.6rem 2rem"
+                    >Sign-In</a
+                  >
+                </li>
+              </ul>
+
+              <div>
+                <button
+                  @click="isFullScreenMenuOpen = !isFullScreenMenuOpen"
+                  id="m-menu"
+                  class="t-white"
+                >
+                  <img
+                    src="https://cdn.sanity.io/images/7b7oo1uk/production/c6b288b140589ecbce259a615c708a893ba2727a-24x24.svg"
+                    alt="Mobile Menu"
+                    srcset="
+                      https://cdn.sanity.io/images/7b7oo1uk/production/c6b288b140589ecbce259a615c708a893ba2727a-24x24.svg
+                    "
+                  />
+                </button>
+              </div>
+            </nav>
+          </header>
+          <div
+            class="flex col center j-c content-area-w content-area-h-article z-0 mb-8 mt-4 gap-1 min-h-15"
+          >
+            <template x-if="article && article.title">
+              <h1
+                class="t-white ta-c w-85p f-700 fs-large"
+                x-text="article.title"
+              ></h1>
+            </template>
+            <template x-if="article && article.subtitle">
+              <p class="t-white ta-c fs-md-2" x-text="article.subtitle"></p>
+            </template>
+            <template
+              x-if="article && (article.categories.includes('Blogs') || article.categories.includes('News') || article.categories.includes('Thought Leadership'))"
+            >
+              <div class="flex center j-c gap-h">
+                <template x-if="article.author && article.author.imageUrl">
+                  <img
+                    class="h-4 b-rounded of-contain"
+                    :src="article.author.imageUrl"
+                    :alt="article.author.name"
+                  />
+                </template>
+                <div class="t-white flex gap-1">
+                  <template x-if="article.author && article.author.name">
+                    <div class="flex gap-1">
+                      <span class="f-bold" x-text="article.author.name"></span
+                      ><span>|</span>
+                    </div>
+                  </template>
+                  <span x-text="formatDate(article._createdAt)"></span
+                  ><span>|</span
+                  ><span x-text="article.categories.join(', ')" class="f-bold"
+                    >Blog</span
+                  >
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div
+          class="section flex col j-s gap-1 center relative pt-4 mb-8"
+          style="
+            background: url(https://cdn.sanity.io/images/7b7oo1uk/production/6a4871e27793155bf9f01c717f894c532b108ee9-1205x826.png?w=2000&fit=max&auto=format&dpr=2)
+              no-repeat;
+            background-position-x: right;
+            background-position-y: 0%;
+          "
+        >
+          <template
+            x-if="(article && article.categories.includes('Whitepapers'))"
+          >
+            <div class="w-85p flex white-paper-content-container">
+              <div class="content-area-2col-w mt-2">
+                <template x-for="content in article.body">
+                  <div>
+                    <template x-if="content._type === 'block'">
+                      <div>
+                        <ul>
+                          <template x-if="content.listItem === 'bullet'">
+                            <template x-for="child in content.children">
+                              <li class="flex start gap-h article-p-font mb-1">
+                                <span class="f-bold h5 pl-h pr-h">•</span
+                                ><span
+                                  x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                  x-text="child.text"
+                                ></span>
+                              </li>
+                            </template>
+                          </template>
+                        </ul>
+                        <template x-if="!content.listItem">
+                          <span>
+                            <template x-if="content.style === 'normal'">
+                              <p class="mb-1 article-p-font">
+                                <template x-for="child in content.children">
+                                  <span>
+                                    <template
+                                      x-if="content.markDefs.length == 0"
+                                    >
+                                      <span
+                                        x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                        x-text="child.text"
+                                      ></span>
+                                    </template>
+                                    <template
+                                      x-if="content.markDefs.length > 0"
+                                    >
+                                      <span>
+                                        <template
+                                          x-if="child.marks.length == 0"
+                                        >
+                                          <span
+                                            x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                            x-text="child.text"
+                                          ></span>
+                                        </template>
+                                        <template x-if="child.marks.length > 0">
+                                          <template
+                                            x-for="markDef in content.markDefs"
+                                          >
+                                            <span>
+                                              <template
+                                                x-if="child.marks.includes(markDef._key)"
+                                              >
+                                                <a
+                                                  x-text="child.text"
+                                                  x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal', 'text-decoration': 'none', 'color': '#864AFC' }"
+                                                  :href="markDef.href"
+                                                ></a>
+                                              </template>
+                                              <template
+                                                x-if="!(child.marks.includes(markDef._key))"
+                                              >
+                                                <span
+                                                  x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                                  x-text="child.text"
+                                                ></span>
+                                              </template>
+                                            </span>
+                                          </template>
+                                        </template>
+                                      </span>
+                                    </template>
+                                  </span>
+                                </template>
+                              </p>
+                            </template>
+                            <template
+                              x-if="content.style === 'h1' || content.style === 'h2' || content.style === 'h3' || content.style === 'h4' || content.style === 'blockquote'"
+                            >
+                              <template x-for="child in content.children">
+                                <span>
+                                  <template x-if="content.style === 'h1'"
+                                    ><h1
+                                      class="h1 mb-h"
+                                      x-text="child.text"
+                                    ></h1
+                                  ></template>
+                                  <template x-if="content.style === 'h2'"
+                                    ><h2
+                                      class="h2 mb-h"
+                                      x-text="child.text"
+                                    ></h2
+                                  ></template>
+                                  <template x-if="content.style === 'h3'"
+                                    ><h3
+                                      class="h3 mb-h"
+                                      x-text="child.text"
+                                    ></h3
+                                  ></template>
+                                  <template x-if="content.style === 'h4'"
+                                    ><h4
+                                      class="h4 mb-h"
+                                      x-text="child.text"
+                                    ></h4
+                                  ></template>
+                                  <template
+                                    x-if="content.style === 'blockquote'"
+                                    ><blockquote
+                                      x-text="child.text"
+                                    ></blockquote
+                                  ></template>
+                                </span>
+                              </template>
+                            </template>
+                          </span>
+                        </template>
+                      </div>
+                    </template>
+                    <template x-if="content._type === 'image'">
+                      <img :src="content.imageUrl" alt="" />
+                    </template>
+                  </div>
+                </template>
+              </div>
+              <div class="content-area-2col-w flex col center j-fs mt-2 p-1">
+                <div class="sec2-right-container" style="padding-left: 0">
+                  <p class="heading fs-md-3">Download Now</p>
+                  <div class="underline"></div>
+                  <form
+                    action="https://forms.zohopublic.eu/frontmintegration/form/WhitepaperSignUp/formperma/aCTZn3VRHFJRd7yZaB7aZWLK6KYhoSXFBsW3Lp-Ced8/htmlRecords/submit"
+                    name="form"
+                    id="form"
+                    method="POST"
+                    accept-charset="UTF-8"
+                    enctype="multipart/form-data"
+                  >
+                    <input
+                      type="hidden"
+                      name="zf_referrer_name"
+                      value=""
+                    /><!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
+                    <input
+                      type="hidden"
+                      name="zf_redirect_url"
+                      value=""
+                    /><!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
+                    <input
+                      type="hidden"
+                      name="zc_gad"
+                      value=""
+                    /><!-- If GCLID is enabled in Zoho CRM Integration, click details of AdWords Ads will be pushed to Zoho CRM -->
+                    <!-- Email -->
+                    <div class="box-shadow">
+                      <label for="Email">Email <em>*</em></label
+                      ><br />
+                      <input
+                        type="text"
+                        id="mail"
+                        name="Email"
+                        value=""
+                        fieldType="9"
+                        maxlength="255"
+                        placeholder="Enter Your Email Address"
+                      />
+                    </div>
+                    <br />
+                    <!-- first name -->
+                    <div class="box-shadow">
+                      <label for="Name_First">First name</label><br />
+                      <input
+                        type="text"
+                        id="Name_First"
+                        name="Name_First"
+                        value=""
+                        placeholder="Enter Your First Name"
+                        maxlength="255"
+                        fieldType="7"
+                      />
+                    </div>
+                    <br />
+                    <!-- Last Name -->
+                    <div class="box-shadow">
+                      <label for="Name_Last">Last name</label><br />
+                      <input
+                        type="text"
+                        id="Name_Last"
+                        name="Name_Last"
+                        value=""
+                        placeholder="Enter Your Last Name"
+                        maxlength="255"
+                        fieldType="7"
+                      />
+                    </div>
+                    <br />
+                    <!-- Company -->
+                    <div class="box-shadow">
+                      <label for="SingleLine">Company<em>*</em></label
+                      ><br />
+                      <input
+                        type="text"
+                        id="SingleLine"
+                        name="SingleLine"
+                        value=""
+                        placeholder="Enter Your Company name"
+                        maxlength="255"
+                      />
+                    </div>
+                    <label
+                      ><div class="agreed">
+                        <span class="fs-sm">
+                          We&#39;re committed to your privacy. FrontM uses the
+                          information you provide to us to contact you about our
+                          relevant content, products, and services. You may
+                          unsubscribe from these communications at any time. For
+                          more information, check out our
+                          <a
+                            href="https://frontm.com/privacy-policy/index.html"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Privacy Policy</a
+                          >.</span
+                        ><br /></div
+                    ></label>
+                    <input type="submit" value="Download Now" id="download" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </template>
+          <template
+            x-if="article && !article.categories.includes('Whitepapers') && article.body"
+          >
+            <div class="mt-4" id="blog-content-container">
+              <template x-for="content in article.body">
+                <div>
+                  <template x-if="content._type === 'block'">
+                    <div>
+                      <ul>
+                        <template x-if="content.listItem === 'bullet'">
+                          <template x-for="child in content.children">
+                            <li class="flex start gap-h article-p-font mb-1">
+                              <span class="f-bold h5 pl-h pr-h">•</span
+                              ><span
+                                x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                x-text="child.text"
+                              ></span>
+                            </li>
+                          </template>
+                        </template>
+                      </ul>
+                      <template x-if="!content.listItem">
+                        <span>
+                          <template x-if="content.style === 'normal'">
+                            <p class="mb-1 article-p-font">
+                              <template x-for="child in content.children">
+                                <span>
+                                  <template x-if="content.markDefs.length == 0">
+                                    <span
+                                      x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                      x-text="child.text"
+                                    ></span>
+                                  </template>
+                                  <template x-if="content.markDefs.length > 0">
+                                    <span>
+                                      <template x-if="child.marks.length == 0">
+                                        <span
+                                          x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                          x-text="child.text"
+                                        ></span>
+                                      </template>
+                                      <template
+                                        x-if="child.marks.length > 0"
+                                        x-data="{'marksData': []}"
+                                      >
+                                        <template
+                                          x-for="markDef in content.markDefs"
+                                        >
+                                          <span>
+                                            <template
+                                              x-if="child.marks.includes(markDef._key)"
+                                            >
+                                              <a
+                                                x-text="child.text"
+                                                x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal', 'text-decoration': 'none', 'color': '#864AFC' }"
+                                                :href="markDef.href"
+                                              ></a>
+                                            </template>
+                                            <!--                                            <template-->
+                                            <!--                                              x-if="!(child.marks.includes(markDef._key))"-->
+                                            <!--                                            >-->
+                                            <!--                                              <span-->
+                                            <!--                                                x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"-->
+                                            <!--                                                x-text="child.text"-->
+                                            <!--                                              ></span>-->
+                                            <!--                                            </template>-->
+                                          </span>
+                                        </template>
+                                      </template>
+                                    </span>
+                                  </template>
+                                </span>
+                              </template>
+                            </p>
+                          </template>
+                          <template
+                            x-if="content.style === 'h1' || content.style === 'h2' || content.style === 'h3' || content.style === 'h4' || content.style === 'blockquote'"
+                          >
+                            <template x-for="child in content.children">
+                              <span>
+                                <template x-if="content.style === 'h1'"
+                                  ><h1 class="h1 mb-h" x-text="child.text"></h1
+                                ></template>
+                                <template x-if="content.style === 'h2'"
+                                  ><h2 class="h2 mb-h" x-text="child.text"></h2
+                                ></template>
+                                <template x-if="content.style === 'h3'"
+                                  ><h3 class="h3 mb-h" x-text="child.text"></h3
+                                ></template>
+                                <template x-if="content.style === 'h4'"
+                                  ><h4 class="h4 mb-h" x-text="child.text"></h4
+                                ></template>
+                                <template x-if="content.style === 'blockquote'">
+                                  <blockquote
+                                    class="article-p-font b-purple pl-1 mt-2 mb-2"
+                                    style="
+                                      border-width: 2px;
+                                      border-bottom: 0;
+                                      border-top: 0;
+                                      border-right: 0;
+                                    "
+                                    x-text="child.text"
+                                  ></blockquote>
+                                </template>
+                              </span>
+                            </template>
+                          </template>
+                        </span>
+                      </template>
+                    </div>
+                  </template>
+                  <template x-if="content._type === 'image'">
+                    <div class="flex center j-c overflow-h">
+                      <img
+                        :src="content.imageUrl"
+                        class="article-img mt-2 mb-2 of-contain"
+                        alt=""
+                      />
+                    </div>
+                  </template>
+                  <template x-if="content._type === 'text_with_image'">
+                    <div class="pt-1 pb-1">
+                      <template x-if="content.imageUrl !== ''">
+                        <img
+                          :src="content.imageUrl"
+                          alt=""
+                          class="of-cover"
+                          style="display: inline; height: 100%"
+                          x-bind:style="{ 'padding-left': content.imagePosition ? '0rem' : '1rem', 'padding-right': content.imagePosition ? '1rem' : '0rem', 'padding-bottom': isColumn ? '0.5rem' : '1rem', width: isColumn ? '40%' : '30%', float: content.imagePosition ? 'left' : 'right' }"
+                        />
+                      </template>
+                      <div class="article-p-font f-700" style="display: inline">
+                        <template
+                          x-for="descriptionContent in content.description"
+                        >
+                          <div style="display: inline">
+                            <template
+                              x-if="descriptionContent._type === 'block'"
+                            >
+                              <div>
+                                <ul>
+                                  <template
+                                    x-if="descriptionContent.listItem === 'bullet'"
+                                  >
+                                    <template
+                                      x-for="child in descriptionContent.children"
+                                    >
+                                      <li
+                                        class="flex start gap-h article-p-font mb-1"
+                                      >
+                                        <span class="f-bold h5 pl-h pr-h"
+                                          >•</span
+                                        ><span
+                                          x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                          x-text="child.text"
+                                        ></span>
+                                      </li>
+                                    </template>
+                                  </template>
+                                </ul>
+                                <template x-if="!descriptionContent.listItem">
+                                  <span>
+                                    <template
+                                      x-if="descriptionContent.style === 'normal'"
+                                    >
+                                      <p class="mb-1 article-p-font">
+                                        <template
+                                          x-for="child in descriptionContent.children"
+                                        >
+                                          <span>
+                                            <template
+                                              x-if="descriptionContent.markDefs.length == 0"
+                                            >
+                                              <span
+                                                x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                                x-text="child.text"
+                                              ></span>
+                                            </template>
+                                            <template
+                                              x-if="descriptionContent.markDefs.length > 0"
+                                            >
+                                              <span>
+                                                <template
+                                                  x-if="child.marks.length == 0"
+                                                >
+                                                  <span
+                                                    x-text="child.text"
+                                                  ></span>
+                                                </template>
+                                                <template
+                                                  x-if="child.marks.length > 0"
+                                                >
+                                                  <template
+                                                    x-for="markDef in descriptionContent.markDefs"
+                                                  >
+                                                    <span>
+                                                      <template
+                                                        x-if="child.marks.includes(markDef._key)"
+                                                      >
+                                                        <a
+                                                          x-text="child.text"
+                                                          x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal', 'text-decoration': 'none', 'color': '#864AFC' }"
+                                                          :href="markDef.href"
+                                                        ></a>
+                                                      </template>
+                                                      <template
+                                                        x-if="!(child.marks.includes(markDef._key))"
+                                                      >
+                                                        <span
+                                                          x-bind:style="{ 'font-style': child.marks.includes('em') ? 'italic': 'normal', 'font-weight': child.marks.includes('strong') ? 'bold' : 'normal' }"
+                                                          x-text="child.text"
+                                                        ></span>
+                                                      </template>
+                                                    </span>
+                                                  </template>
+                                                </template>
+                                              </span>
+                                            </template>
+                                          </span>
+                                        </template>
+                                      </p>
+                                    </template>
+                                    <template
+                                      x-if="descriptionContent.style === 'h1' || descriptionContent.style === 'h2' || descriptionContent.style === 'h3' || descriptionContent.style === 'h4' || descriptionContent.style === 'blockquote'"
+                                    >
+                                      <template
+                                        x-for="child in descriptionContent.children"
+                                      >
+                                        <span>
+                                          <template
+                                            x-if="descriptionContent.style === 'h1'"
+                                            ><h1
+                                              class="h1 mb-h"
+                                              x-text="child.text"
+                                            ></h1
+                                          ></template>
+                                          <template
+                                            x-if="descriptionContent.style === 'h2'"
+                                            ><h2
+                                              class="h2 mb-h"
+                                              x-text="child.text"
+                                            ></h2
+                                          ></template>
+                                          <template
+                                            x-if="descriptionContent.style === 'h3'"
+                                            ><h3
+                                              class="h3 mb-h"
+                                              x-text="child.text"
+                                            ></h3
+                                          ></template>
+                                          <template
+                                            x-if="descriptionContent.style === 'h4'"
+                                            ><h4
+                                              class="h4 mb-h"
+                                              x-text="child.text"
+                                            ></h4
+                                          ></template>
+                                          <template
+                                            x-if="descriptionContent.style === 'blockquote'"
+                                          >
+                                            <blockquote
+                                              class="article-p-font b-purple pl-1 mt-2 mb-2"
+                                              style="
+                                                border-width: 2px;
+                                                border-bottom: 0;
+                                                border-top: 0;
+                                                border-right: 0;
+                                              "
+                                              x-text="child.text"
+                                            ></blockquote>
+                                          </template>
+                                        </span>
+                                      </template>
+                                    </template>
+                                  </span>
+                                </template>
+                              </div>
+                            </template>
+                          </div>
+                        </template>
+                      </div>
+                      <div style="clear: both"></div>
+                    </div>
+                  </template>
+                  <!-- <div x-show="block._type === 'block'">
+                                    <div class="pt-1">
+                                        <template x-if="block.listItem !== 'bullet'">
+                                            <div>
+                                                <template x-if="block.style === 'normal' || block.style === 'h1' || block.style === 'h2'|| block.style === 'h3'|| block.style === 'h4'">
+                                                    <div :class="block.style === 'normal' ? 'article-p-font': block.style" style="display: inline !important;">
+                                                        <template x-if="block.markDefs.length === 0">
+                                                            <template x-for="child in block.children">
+                                                                <span x-bind:style="{
+                                                                    'font-style': child.marks.includes('em') ? 'italic': 'normal',
+                                                                    'font-weight': child.marks.includes('strong') ? 'bold' : 'normal'
+                                                                }" x-text="child.text"></span>
+                                                            </template>
+                                                        </template>
+                                                        <template x-if="block.markDefs.length > 0">
+                                                            <template x-for="child in block.children">
+                                                                <div style="display: inline !important;">
+                                                                    <template x-if="child.marks.length === 0">
+                                                                        <span x-bind:style="{
+                                                                            'font-style': child.marks.includes('em') ? 'italic': 'normal',
+                                                                            'font-weight': child.marks.includes('strong') ? 'bold' : 'normal'
+                                                                        }" x-text="child.text"></span>
+                                                                    </template>
+                                                                    <template x-for="markDef in block.markDefs">
+                                                                        <template x-if="child.marks.length > 0">
+                                                                            <template x-for="mark in child.marks">
+                                                                                <template x-if="markDef._key === mark">
+                                                                                    <template x-if="markDef._type === 'link'">
+                                                                                        <a
+                                                                                            :href="markDef.href"
+                                                                                            x-bind:style="{
+                                                                                                'font-style': child.marks.includes('em') ? 'italic': 'normal',
+                                                                                                'font-weight': child.marks.includes('strong') ? 'bold' : 'normal'
+                                                                                            }"
+                                                                                            x-text="child.text" style="text-decoration: underline;text-wrap: wrap;">
+                                                                                        </a>
+                                                                                    </template>
+                                                                                </template>
+                                                                            </template>
+                                                                        </template>
+                                                                    </template>
+                                                                </div>
+                                                            </template>
+                                                        </template>
+                                                    </div>
+                                                </template>
+                                                <template x-if="block.style === 'blockquote'">
+                                                    <div class="b-purple card-rounded-sm p-2 article-p-font" style="border-width: 0;border-left-width: 2px;border-right-width: 2px;">
+                                                        <template x-for="child in block.children">
+                                                            <span :class="child.marks.join(' ')" x-text="child.text"></span>
+                                                        </template>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </template>
+                                        <template x-if="block.listItem === 'bullet'">
+                                            <ul>
+                                                <template x-for="child in block.children">
+                                                    <li class="flex center gap-h"><span class="f-bold h5">•</span><span :class="child.marks.join(' ') pl-h" x-text="child.text"></span></li>
+                                                </template>
+                                            </ul>
+                                        </template>
+                                    </div>
+                                </div>
+                                <div x-show="block._type === 'image'" class="flex col j-c center">
+                                    <img :src="block.imageUrl" alt="" class="article-img mt-4 mb-4 of-contain" :srcset="block.imageUrl">
+                                </div> -->
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
+        <template
+          x-if="article && !article.categories.includes('Whitepapers') && article.relatedposts && article.relatedposts.length > 0"
+        >
+          <div
+            class="featured-reads container min-h-75 bg-cream flex col center p-1"
+            style="background: linear-gradient(#f5f5f5, #f9f9f9, #ffffff)"
+          >
+            <div class="w-80p flex col center j-c gap-1 mt-4 mb-4 ta-c">
+              <h3 class="fs-lg-2">Related Articles</h3>
+              <div class="w-100p mt-2 featured-reades-swiper">
+                <div class="swiper-wrapper flex pt-1 pb-2">
+                  <template x-for="post in article.relatedposts">
+                    <a
+                      draggable="true"
+                      class="swiper-slide card_background featured-reads-card overflow-h scale-on-hover relative ml-q"
+                      x-bind:style="`background: url('${post.imageUrl}');cursor: pointer;background-position: center;background-repeat: no-repeat;background-size: cover;`"
+                      x-data="{isHover: false}"
+                      :href="post.article_url"
+                      @mouseover="isHover = true"
+                      @mouseleave="isHover = false"
+                    >
+                      <div
+                        class="absolute l-0 t-0 w-100p h-100p flex col j-sb gradient-foreground"
+                      >
+                        <h4
+                          class="ta-s f-medium fs-n-3 mt-1 ml-1 mr-1"
+                          x-text="post.title"
+                        ></h4>
+                        <p
+                          class="ta-e flex center j-fe gap-h fs-n-2 mb-1 ml-1 mr-1"
+                        >
+                          <span>Read more</span
+                          ><img
+                            src="https://cdn.sanity.io/images/7b7oo1uk/production/bbbbb6b8975458ba932bf87c5698d239eddc1f2c-20x20.svg"
+                            x-show="!isHover"
+                            alt="Arrow icon"
+                          /><img
+                            src="https://cdn.sanity.io/images/7b7oo1uk/production/3724582b9e8b1999e770a7f659bf5d7fa8b92a30-20x20.svg"
+                            x-show="isHover"
+                            alt="Arrow icon"
+                          />
+                        </p>
+                      </div>
+                    </a>
+                  </template>
+                </div>
+              </div>
+              <!-- <a href="https://frontm.com/resources/index.html" class="mt-8 mb-8 flex center t-purple-light gap-h f-medium fs-n-2 scale-on-hover">
+                            <span>View More</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#864AFC">
+                                <polygon points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707" />
+                            </svg>
+                        </a> -->
+            </div>
+          </div>
+        </template>
+        <template x-if="!article">
+          <div class="loader"></div>
+        </template>
+        <div
+          class="container bg-black flex col center bg-join-us p-1 join-us-container-2col-transparent-bg"
+          x-bind:class="article.relatedposts && article.relatedposts.length > 0 ? 'bg-join-us': 'bg-join-us-black'"
+        >
+          <h3 class="mt-8 t-white ta-c fs-lg-2">
+            Join us in shaping the future of work in maritime
+          </h3>
+          <div class="flex j-sb mt-2 mb-8 gap-2 sec-last-btns grid">
+            <a
+              class="t-white b-rounded mt-2 w-auto j-c flex center gap-h bg-purple-light scale-on-hover"
+              style="padding: 1rem 2rem"
+              href="https://forms.zohopublic.eu/frontmintegration/form/BookaDemoPopup/formperma/X2cHKx12QHdH4yfabtPjAGCsaeIG60kauGiWzds5uoY"
+              title="Book a Demo with FrontM"
+              target="_blank"
+              onclick="zforms_open_window(this.href, 648, 700); return false"
+            >
+              <span class="fs-normal">Request a demo</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="white"
+              >
+                <polygon
+                  points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
+                />
+              </svg>
+            </a>
+            <button
+              class="t-white b-rounded mt-2 j-c w-auto flex center gap-h bg-purple-light j-c fs-normal scale-on-hover"
+              style="padding: 1rem 2rem"
+              onclick="showDialog()"
+            >
+              <span class="fs-normal flex gap-q"
+                >Download <span class="f-medium">onship</span></span
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="white"
+              >
+                <polygon
+                  points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <footer class="container min-h-30 bg-footer flex col center j-c">
+          <div class="flex j-sb">
+            <div class="flex col footer-align-item">
+              <a href="/" class="w-fc"
+                ><img
+                  src="https://cdn.sanity.io/images/7b7oo1uk/production/a4dcd178f8c8ae9f39f69130cbd63163ddedafe8-900x400.png"
+                  alt="frontM Limited"
+                  width="auto"
+                  height="60px"
+                  srcset="
+                    https://cdn.sanity.io/images/7b7oo1uk/production/a4dcd178f8c8ae9f39f69130cbd63163ddedafe8-900x400.png
+                  "
+              /></a>
+              <!--Zoho Campaigns Web-Optin Form Starts Here-->
+              <script
+                type="text/javascript"
+                src="https://rwbqin-zcmp.maillist-manage.eu/js/optin.min.js"
+                onload="setupSF('sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9','ZCFORMVIEW',false,'light',false,'0')"
+              ></script>
+              <script type="text/javascript">
+                function runOnFormSubmit_sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9(
+                  th
+                ) {
+                  /*Before submit, if you want to trigger your event, "include your code here"*/
+                }
+              </script>
+
+              <div
+                id="sf3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9"
+                class="footer-form"
+                data-type="signupform"
+              >
+                <div id="customForm">
+                  <div class="quick_form_8_css" name="SIGNUP_BODY">
+                    <div>
+                      <div id="SIGNUP_HEADING"></div>
+                      <div style="position: relative">
+                        <div
+                          id="Zc_SignupSuccess"
+                          style="
+                            display: none;
+                            position: absolute;
+                            margin-left: 4%;
+                            width: 90%;
+                            background-color: white;
+                            padding: 3px;
+                            border: 3px solid rgb(194, 225, 154);
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            word-break: break-all;
+                          "
+                        >
+                          <table
+                            width="100%"
+                            cellpadding="0"
+                            cellspacing="0"
+                            border="0"
+                          >
+                            <tbody>
+                              <tr>
+                                <td width="10%">
+                                  <img
+                                    class="successicon"
+                                    src="https://rwbqin-zcmp.maillist-manage.eu/images/challangeiconenable.jpg"
+                                    align="absmiddle"
+                                  />
+                                </td>
+                                <td>
+                                  <span
+                                    id="signupSuccessMsg"
+                                    style="
+                                      color: rgb(73, 140, 132);
+                                      font-family: sans-serif;
+                                      font-size: 14px;
+                                      word-break: break-word;
+                                    "
+                                    >&nbsp;&nbsp;Thank you for Signing Up</span
+                                  >
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <form
+                        method="POST"
+                        id="zcampaignOptinForm"
+                        action="https://rwbqin-zcmp.maillist-manage.eu/weboptin.zc"
+                        target="_zcSignup"
+                        style="border: none"
+                      >
+                        <div
+                          class="flex j-c center gap-1 mt-2 mb-2 w-fc footer-form-row"
+                        >
+                          <div
+                            class="SIGNUP_FLD flex col j-fs"
+                            style="margin-right: 0; width: fit-content"
+                          >
+                            <input
+                              type="email"
+                              class="p-h t-white"
+                              style="
+                                background-color: #212658;
+                                border-style: none;
+                                border-radius: 5px;
+                              "
+                              placeholder="Email"
+                              changeitem="SIGNUP_FORM_FIELD"
+                              name="CONTACT_EMAIL"
+                              id="EMBED_FORM_EMAIL_LABEL"
+                              required
+                            />
+                            <div class="fs-xs t-red mt-h hide" id="errorMsgDiv">
+                              Please enter correct email address
+                            </div>
+                          </div>
+                          <div
+                            class="SIGNUP_FLD"
+                            style="margin-left: 0; width: fit-content"
+                          >
+                            <input
+                              class="p-h bg-white"
+                              style="border-style: none; border-radius: 5px"
+                              type="button"
+                              name="SIGNUP_SUBMIT_BUTTON"
+                              id="zcWebOptin"
+                              value="Join"
+                            />
+                          </div>
+                        </div>
+                        <input type="hidden" id="fieldBorder" value="" />
+                        <input
+                          type="hidden"
+                          id="submitType"
+                          name="submitType"
+                          value="optinCustomView"
+                        />
+                        <input
+                          type="hidden"
+                          id="emailReportId"
+                          name="emailReportId"
+                          value=""
+                        />
+                        <input
+                          type="hidden"
+                          id="formType"
+                          name="formType"
+                          value="QuickForm"
+                        />
+                        <input
+                          type="hidden"
+                          name="zx"
+                          id="cmpZuid"
+                          value="14ad52cf9c"
+                        />
+                        <input type="hidden" name="zcvers" value="2.0" />
+                        <input
+                          type="hidden"
+                          name="oldListIds"
+                          id="allCheckedListIds"
+                          value=""
+                        />
+                        <input
+                          type="hidden"
+                          id="mode"
+                          name="mode"
+                          value="OptinCreateView"
+                        />
+                        <input type="hidden" id="zcld" name="zcld" value="" />
+                        <input type="hidden" id="zctd" name="zctd" value="" />
+                        <input type="hidden" id="document_domain" value="" />
+                        <input
+                          type="hidden"
+                          id="zc_Url"
+                          value="rwbqin-zcmp.maillist-manage.eu"
+                        />
+                        <input
+                          type="hidden"
+                          id="new_optin_response_in"
+                          value="0"
+                        />
+                        <input
+                          type="hidden"
+                          id="duplicate_optin_response_in"
+                          value="0"
+                        />
+                        <input
+                          type="hidden"
+                          name="zc_trackCode"
+                          id="zc_trackCode"
+                          value="ZCFORMVIEW"
+                        />
+                        <input
+                          type="hidden"
+                          id="zc_formIx"
+                          name="zc_formIx"
+                          value="3z9e99744161a87d081b416ca7ecbe2e45d76b162fa2296b5f5f0dbf1a4ea1b1f9"
+                        />
+                        <input type="hidden" id="viewFrom" value="URL_ACTION" />
+                        <span style="display: none" id="dt_CONTACT_EMAIL"
+                          >1,true,6,Contact Email,2</span
+                        >
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <img
+                  src="https://rwbqin-zcmp.maillist-manage.eu/images/spacer.gif"
+                  class="hide"
+                  id="refImage"
+                  onload="referenceSetter(this)"
+                />
+              </div>
+              <input
+                type="hidden"
+                id="signupFormType"
+                value="QuickForm_Horizontal"
+              />
+              <div
+                id="zcOptinOverLay"
+                oncontextmenu="return false"
+                style="
+                  display: none;
+                  text-align: center;
+                  background-color: rgb(0, 0, 0);
+                  opacity: 0.5;
+                  z-index: 100;
+                  position: fixed;
+                  width: 100%;
+                  top: 0px;
+                  left: 0px;
+                  height: 988px;
+                "
+              ></div>
+              <div
+                id="zcOptinSuccessPopup"
+                style="
+                  display: none;
+                  z-index: 9999;
+                  width: 800px;
+                  height: 40%;
+                  top: 84px;
+                  position: fixed;
+                  left: 26%;
+                  background-color: #ffffff;
+                  border-color: #e6e6e6;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-shadow: 0 1px 10px #424242;
+                  padding: 35px;
+                "
+              >
+                <span
+                  style="
+                    position: absolute;
+                    top: -16px;
+                    right: -14px;
+                    z-index: 99999;
+                    cursor: pointer;
+                  "
+                  id="closeSuccess"
+                >
+                  <img
+                    src="https://rwbqin-zcmp.maillist-manage.eu/images/videoclose.png"
+                  />
+                </span>
+                <div id="zcOptinSuccessPanel"></div>
+              </div>
+
+              <!--Zoho Campaigns Web-Optin Form Ends Here-->
+              <div class="flex row gap-1 mb-2 w-fc">
+                <!-- <a href="https://twitter.com/FrontMPlatform" target="_blank"
+                  ><img
+                    class="logo"
+                    style="height: 44px"
+                    src="https://cdn.sanity.io/images/7b7oo1uk/production/54b4175ebc8c7a3c5521a4cf0c9a2921e587e835-36x36.svg"
+                    alt="Follow us on X"
+                    srcset="
+                      https://cdn.sanity.io/images/7b7oo1uk/production/54b4175ebc8c7a3c5521a4cf0c9a2921e587e835-36x36.svg
+                    "
+                /></a> -->
+                <a
+                  href="https://www.linkedin.com/company/frontm-limited"
+                  target="_blank"
+                  ><img
+                    class="logo"
+                    style="height: 44px"
+                    src="https://cdn.sanity.io/images/7b7oo1uk/production/91903e5324f3983fb2ed3e63457ce568bd40f7f9-36x36.svg"
+                    alt="Follow us on LinkedIn"
+                    srcset="
+                      https://cdn.sanity.io/images/7b7oo1uk/production/91903e5324f3983fb2ed3e63457ce568bd40f7f9-36x36.svg
+                    "
+                /></a>
+              </div>
+            </div>
+
+            <div
+              class="flex row wrap w-100p footer-nav footer-column-1-gap jc-e"
+            >
+              <ul
+                class="flex gap-1 footer-mob-col"
+                style="margin-block-start: 1em; margin-block-end: 1em"
+              >
+                <li><h6 class="t-white fs-normal">Solutions</h6></li>
+                <li>
+                  <a class="fs-sm" href="./onship.html">Maritime Operators</a>
+                </li>
+                <li>
+                  <a class="fs-sm" href="./coming-soon.html"
+                    >Solution Providers</a
+                  >
+                </li>
+                <li>
+                  <a class="fs-sm" href="./coming-soon.html"
+                    >Service Providers</a
+                  >
+                </li>
+                <li>
+                  <a class="fs-sm" href="./coming-soon.html"
+                    >Maritime Professionals</a
+                  >
+                </li>
+              </ul>
+              <!-- <ul class="flex col gap-1">
+                            <li><h6 class="t-white fs-normal">Industry</h6></li>
+                            <li>Maritime shipping</li>
+                            <li>Cruise</li>
+                            <li>Fisheries</li>
+                            <li>Ports & harbours</li>
+                            <li>Remote Enterprises</li>
+                            <li>Liesure-yachts & superyachts</li>
+                            <li>Other</li>
+                        </ul> -->
+              <ul
+                class="flex gap-1 footer-mob-col"
+                style="margin-block-start: 1em; margin-block-end: 1em"
+              >
+                <li><h6 class="t-white fs-normal">Company</h6></li>
+                <li>
+                  <a class="fs-sm" href="https://platform.frontm.com/about"
+                    >About Us</a
+                  >
+                </li>
+                <li><a class="fs-sm" href="./news.html">Press</a></li>
+                <li>
+                  <a class="fs-sm" href="https://platform.frontm.com/careers"
+                    >Careers</a
+                  >
+                </li>
+                <li>
+                  <a class="fs-sm" href="https://platform.frontm.com/contact"
+                    >Contact us</a
+                  >
+                </li>
+              </ul>
+              <ul
+                class="flex gap-1 footer-mob-col"
+                style="margin-block-start: 1em; margin-block-end: 1em"
+              >
+                <li><h6 class="t-white fs-normal">Resources</h6></li>
+                <li>
+                  <a class="fs-sm" href="./resourcesHub.html">Resources Hub</a>
+                </li>
+                <li>
+                  <a class="fs-sm" href="https://help.frontm.com/hc/en-us"
+                    >Help</a
+                  >
+                </li>
+                <li>
+                  <a class="fs-sm" href="./terms-condition.html">Legal</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p class="fs-normal mt-2" style="color: #638dff">
+            © All rights reserved
+          </p>
+        </footer>
+      </div>
+    </template>
+    <template x-if="!article">
+      <div class="page-loader"></div>
+    </template>
+    <dialog
+      id="downloadAppDialog"
+      class="fixed relative z-10 pt-2 pb-2 ta-c b-white border-radius-15px flex col center j-c gap-1 hide"
+    >
+      <button
+        class="h1 f-thin absolute r-0 t-0 mr-1 pt-1"
+        style="outline: none; font-size: 34px"
+        onclick="closeDialog()"
+      >
+        ✕
+      </button>
+      <img
+        src="https://cdn.sanity.io/files/7b7oo1uk/production/67ca502a3f4fc31e2a34cc891b0f0cded942c33a.png"
+        alt="FrontM QR Code"
+        srcset="
+          https://cdn.sanity.io/files/7b7oo1uk/production/67ca502a3f4fc31e2a34cc891b0f0cded942c33a.png
+        "
+      />
+      <h4 class="f-medium">Download <span class="f-bold">onship</span> now!</h4>
+      <p>
+        <strong>onship</strong>, The Maritime Superapp, is a secure crew welfare
+        and collaboration app. It helps shipping companies connect teams from
+        shore to ship and allows seafarers to stay connected with friends and
+        family.
+      </p>
+      <div class="flex gap-4 center j-c">
+        <a
+          href="https://play.google.com/store/apps/details?id=com.frontm.onship&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+          target="_blank"
+          class="flex j-c center"
+        >
+          <img
+            class="of-fill"
+            style="height: 60px"
+            alt="Get it on Google Play"
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/cb8126b32c2274e0394246b40bd0b7f9f847e44c-646x250.png"
+          />
+        </a>
+        <a
+          href="https://apps.apple.com/in/app/onship/id1491731188"
+          target="_blank"
+          class="flex j-c center"
+        >
+          <img
+            class="of-cover h-40px"
+            alt="Download on App Store"
+            src="https://cdn.sanity.io/images/7b7oo1uk/production/8f3e4f92038c36b9fbed661486b9277ba4a1c5c7-284x95.svg"
+          />
+        </a>
+      </div>
+    </dialog>
+    <script
+      src="https://tag.clearbitscripts.com/v1/pk_e371ccc2a8476117c19f70e730a0e8ab/tags.js"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs-axios@latest/dist/api.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script>
+      function showDialog() {
+        const downloadAppDialog = document.querySelector("#downloadAppDialog");
+        // downloadAppDialog.classList.remove("hide");
+        downloadAppDialog.classList.add("show");
+        downloadAppDialog.show();
+      }
+
+      function closeDialog() {
+        const downloadAppDialog = document.querySelector("#downloadAppDialog");
+        // downloadAppDialog.classList.add("hide");
+        downloadAppDialog.classList.remove("show");
+        downloadAppDialog.close();
+      }
+    </script>
+    <script>
+      function referenceSetter() {}
+    </script>
+    <script>
+      function formatDate(dateString) {
+        const options = { day: "numeric", month: "short", year: "numeric" };
+        const date = new Date(dateString);
+        return date.toLocaleDateString("en-US", options);
+      }
+    </script>
+  </body>
+</html>

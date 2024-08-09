@@ -1,0 +1,454 @@
+/* .contact-header----------- */
+.form .form-btn {
+  font-family: Figtree;
+}
+
+.contact-header {
+  min-height: 65vh;
+  padding: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.contact-header-container {
+  min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-header-title {
+  color: #fff;
+  font-family: Figtree;
+  font-size: 2.125rem;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+.contact-header-content {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2;
+}
+
+/* .contact-header form----------- */
+.contact-header-form {
+  width: 580px;
+  height: 568px;
+  padding: 2.5rem 1.8rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 1.5rem;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* contact-main--------- */
+
+/* contact-main contact-support--------- */
+.contact-support {
+  background-color: #fff;
+  width: 100%;
+}
+
+.contact-support-container {
+  padding: 6rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+.contact-support-card {
+  text-align: center;
+  padding: 4rem 3rem;
+  border: 1px solid #e9e9e9;
+  background: radial-gradient(circle at top left,
+      rgba(255, 255, 255, 1),
+      transparent),
+    radial-gradient(circle at top right, rgba(220, 47, 213, 0.4), transparent),
+    radial-gradient(circle at bottom left, rgba(99, 141, 255, 0.2), transparent),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 1), transparent);
+  background-blend-mode: screen;
+  border-radius: 1.5rem;
+  width: 580px;
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem; */
+}
+
+.contact-card-title {
+  /* font-size: 2.3rem; */
+  font-family: Figtree;
+  font-size: 2.125rem;
+  text-align: center;
+  font-weight: 700;
+  line-height: 48px;
+  color: #1e1f4b;
+  /* font-weight: 900; */
+}
+
+.contact-card-info {
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.contact-card-info-content {
+  color: #2e3e5c;
+  font-family: Figtree;
+  font-size: 1.5rem;
+  /* text-align: center; */
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* contact-main contact-map--------- */
+.contact-map {
+  background: url("https://cdn.sanity.io/images/7b7oo1uk/production/64af48c3c09dd37828c54945ea8a47fa28c59b6b-1440x1122.svg") center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-map-container {
+  padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1100px;
+  text-align: center;
+}
+
+.contact-map-img {
+  width: 100%;
+}
+
+.contact-map-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #fff;
+}
+
+.contact-map-content-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  /* text-align: center !important; */
+}
+
+.contact-map-content-title {
+  /* font-size: 2rem; */
+  font-family: Figtree;
+  font-size: 2.125rem;
+  text-align: center;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+.contact-map-content {
+  /* font-size: 1.25rem; */
+  font-family: Figtree;
+  font-size: 1rem;
+  /* text-align: center; */
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.contact-map-content-link {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.contact-map-link-span {
+  font-size: 1.2rem;
+  font-weight: 700 !important;
+}
+
+.contact-map-link-content {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+/* to be global -------------------->*/
+.contact-card-info-link-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.contact-card-info-link-icons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-circle-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: #ff8824;
+  transform: translateX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.link-arrow-icon {
+  width: 25px;
+  height: 25px;
+  margin-left: -0.6rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.strech {
+  animation: strech 0.3s forwards 0.8s;
+}
+
+.contact-card-info-link-content {
+  color: #1e1f4b;
+}
+
+@keyframes strech {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(30%);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+/* to be global end -------------------->*/
+
+@media only screen and (max-width: 1300px) {
+  .contact-card-title {
+    font-size: 2.125rem;
+  }
+
+  .contact-support-container {
+    padding: 6rem 4rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .contact-card-title {
+    font-size: 1.9rem;
+  }
+
+  .contact-support-card {
+    padding: 5rem 2rem;
+  }
+
+  .contact-support-container {
+    padding: 5rem 2rem;
+  }
+
+  .contact-header {
+    padding-top: 1rem;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .contact-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+  }
+
+  .contact-card-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-header-form {
+    min-height: 450px;
+    min-width: 320px;
+  }
+
+  .contact-support-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-map-content-title {
+    font-size: 1.56rem;
+  }
+
+  .contact-header {
+    padding: 6rem 1rem;
+  }
+
+  .contact-header-container {
+    padding: 6rem 2rem;
+  }
+
+  .contact-support-card,
+  .contact-header-container,
+  .contact-header-form {
+    width: 480px;
+  }
+
+  .contact-map-container {
+    padding: 3rem 2rem;
+  }
+
+  .contact-header-title {
+    font-size: 2.125rem;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .contact-map-container {
+    padding: 3rem 1rem;
+  }
+
+  .contact-map-content {
+    font-size: 1rem;
+  }
+
+  .contact-map-link-span {
+    font-size: 0.9rem;
+  }
+
+  .contact-map-link-content {
+    font-size: 0.8rem;
+  }
+
+  .contact-header-container {
+    padding: 6rem 2rem;
+  }
+
+  .contact-support-card {
+    width: 380px;
+  }
+
+  .contact-card-title {
+    font-size: 1.4rem;
+  }
+
+  .contact-card-info-content {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  .contact-support-container {
+    padding: 6rem 1rem;
+    text-align: center;
+  }
+
+  .contact-header-content {
+    font-size: 1.5rem;
+  }
+
+  .contact-support-card,
+  .contact-header-container,
+  .contact-header-form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  .contact-header-title {
+    text-align: center;
+  }
+
+  .contact-header-content {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .contact-header-title {
+    font-size: 2.125rem;
+  }
+}
+
+@media only screen and (min-device-width: 820px) and (max-device-width: 1180px) and (orientation: portrait) {
+  .contact-header-title {
+    font-size: 2.125rem;
+  }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
+  .contact-header-title {
+    font-size: 2.125rem;
+  }
+}
